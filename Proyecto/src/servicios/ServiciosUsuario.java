@@ -3,6 +3,7 @@ package servicios;
 
 import java.util.ArrayList;
 
+import dao.UsuarioDAOJDBC;
 import model.Usuario;
 
 /**
@@ -23,7 +24,7 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario> {
 	
 	@Override
 	public void annadir(Usuario usuario) {
-		usuarioDAOJDBC.annadirUsuario(usuario);
+		UsuarioDAOJDBC.annadirUsuario(usuario);
 	}
 	
 	@Override
@@ -40,6 +41,12 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario> {
 	public ArrayList<Usuario> mostrarTodo() {
 		
 		return usuario.getListaUsuarios();
+	}
+	
+	public void peliculasQuePuedeVer(Usuario user){
+		
+		usuario.peliculaQuePuedeVer();
+		
 	}
 }
 
