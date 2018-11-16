@@ -2,14 +2,14 @@ package gui;
 
 import model.Pelicula;
 import model.Usuario;
+import servicios.ServiciosPelicula;
 import servicios.ServiciosUsuario;
 import utilidades.LeerDatos;
 
 public class Menu {
 	
 	public static void menu(){
-		
-		int i =LeerDatos.leerInt("Introduce un numero");
+		int i;
 		
 		do{
 		
@@ -17,6 +17,9 @@ public class Menu {
 		System.out.println("1.gestion categorias");
 		System.out.println("2.gestion de usuarios");
 		System.out.println("3.gestion de peliculas");
+		
+		
+		i=LeerDatos.leerInt("Introduce un numero");
 		
 		switch(i){
 		
@@ -36,7 +39,7 @@ public class Menu {
 	public static void menuUsuario(){
 		
 		ServiciosUsuario sv= new ServiciosUsuario();
-		int i =LeerDatos.leerInt("Introduce un numero");
+		int i =0;
 		
 		do{
 		
@@ -46,6 +49,7 @@ public class Menu {
 		System.out.println("3.modificar usuario");
 		System.out.println("4.listado de usuarios");
 		System.out.println("5.peliculas que puede ver un usuario");
+		i=LeerDatos.leerInt("Introduce un numero");
 		Usuario  u= new Usuario();
 		u.creadorUsuario();
 		switch(i){
@@ -119,10 +123,11 @@ public class Menu {
 		}while(i!=0);
 		
 	}	
-	
+
+	//hacer cuando este categoria
 public static void menuCategorias(){
 		
-		int i =LeerDatos.leerInt("Introduce un numero");
+		int i =0;
 		
 		do{
 		
@@ -130,7 +135,7 @@ public static void menuCategorias(){
 		System.out.println("1.añadir pelicula");
 		System.out.println("2.borrar pelicula");
 		System.out.println("3.modificar pelicula");
-
+		i=LeerDatos.leerInt("Introduce un numero");
 		
 		switch(i){
 		
