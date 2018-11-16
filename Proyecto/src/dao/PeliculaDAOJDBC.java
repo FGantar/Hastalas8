@@ -5,12 +5,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import model.Pelicula;
 import model.Usuario;
 import utilidades.Fichero;
 
 public class PeliculaDAOJDBC {
 
+	private static Logger logger = LogManager.getLogger(Fichero.class);
 	private Connection con = null;
 	
 	public static final String rutaFichero = "Peliculas.txt";
@@ -30,7 +34,9 @@ public class PeliculaDAOJDBC {
 				throw new DAOException("Error al añadir pelicula");
 			}
 		} catch (SQLException se) {
+			logger.warn("ERROR" + se.getMessage());
 			throw new DAOException("Error añadiendo pelicula en DAO", se);
+			
 		}
 	}
 
@@ -44,6 +50,7 @@ public class PeliculaDAOJDBC {
 			}
 
 		} catch (SQLException se) {
+			logger.warn("ERROR "+se.getMessage());
 			throw new DAOException("Error modificando pelicula en DAO", se);
 		}
 	}
