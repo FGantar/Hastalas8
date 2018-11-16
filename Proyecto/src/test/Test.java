@@ -6,12 +6,19 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import model.Usuario;
 import dao.Conex;
+import dao.DAOException;
 import dao.UsuarioDAOJDBC;
+
 
 public class Test {
 
+	private Logger logger = LogManager.getLogger(Conex.class);
+	
 	@org.junit.Test
 	public void anadirUsuario() {
 		
@@ -22,15 +29,23 @@ public class Test {
 		
 		
 
-		cont = user.buscar("select count(*) from Usuario");
+		try {
+			cont = user.buscar("select count(*) from Usuario");
+			
+			u.creadorUsuario();
+			
+			user.annadirUsuario(u);
+			
+			cont2 =user.buscar("select count(*) from Usuario");
+			
+			assertEquals(cont, cont2);	
+			
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			logger.warn("ERROR " + e.getMessage());
+		}
 		
-		u.creadorUsuario();
-		
-		user.annadirUsuario(u);
-		
-		cont2 =user.buscar("select count(*) from Usuario");
-		
-		assertEquals(cont, cont2);	
+
 		
 	}
 	
@@ -38,9 +53,9 @@ public class Test {
 	public void testBorrarUsuario() {
 
 		Connection con = null;
-		int contBefore;
-		int contAfter;
-		int idPrueba;
+		int contBefore = 0;
+		int contAfter = 0;
+		int idPrueba = 0;
 		
 		UsuarioDAOJDBC userDAO = new UsuarioDAOJDBC();
 
@@ -65,7 +80,7 @@ public class Test {
 			}
 
 		} catch (Exception e) {
-			throw new Exception("Error", e);
+			logger.warn("ERROR " + e.getMessage());
 		}
 
 		assertEquals(contBefore, contAfter + 1);
