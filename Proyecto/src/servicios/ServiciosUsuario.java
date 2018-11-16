@@ -3,6 +3,7 @@ package servicios;
 
 import java.util.ArrayList;
 
+import dao.DAOException;
 import dao.UsuarioDAOJDBC;
 import model.Usuario;
 
@@ -16,39 +17,38 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario> {
 	 * Crear objeto usuario de la clase UsuarioDAOJDBC
 	 */
 
-	UsuarioDAOJDBC usuario = new UsuarioDAOJDBC();
+	UsuarioDAOJDBC usuarioDAO = new UsuarioDAOJDBC();
 	
 	/**
 	 * Métodos de la Interfaz genérica implementada OperacionesImpl
 	 */
 	
 	@Override
-	public void annadir(Usuario usuario) {
-		UsuarioDAOJDBC.annadirUsuario(usuario);
+	public void annadir(Usuario usuario) throws DAOException {
+		usuarioDAO.annadirUsuario(usuario);
 	}
 	
 	@Override
-	public boolean modificar(Usuario usuario) {
-		usuario.modificarUsuario(usuario);
+	public void modificar(Usuario usuario) throws DAOException {
+		usuarioDAO.modificarUsuario(usuario);
 	}
 
 	@Override
-	public void borrar(Usuario usuario) {
-		usuario.borrarUsuario(usuario);
+	public void borrar(int IDusuario) throws DAOException{
+		usuarioDAO.borrarUsuario(IDusuario);
 	}
 
 	@Override
-	public ArrayList<Usuario> mostrarTodo() {
+	public ArrayList<Usuario> mostrarTodo() throws DAOException {
+		return usuarioDAO.getListaUsuarios();}
 		
-		return usuario.getListaUsuarios();
-	}
-	
 	/** Método que muestra las películas que el usuario puede ver.
-	 */
+	*/
+	
 	
 	public void peliculasQuePuedeVer(Usuario user){
 		
-		usuario.peliculaQuePuedeVer();
+		usuarioDAO.peliculaQuePuedeVer();
 		
 	}
 }

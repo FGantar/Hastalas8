@@ -12,16 +12,22 @@ package dao;
 
 import model.Pelicula;
 import model.Usuario;
+import utilidades.Fichero;
+
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class UsuarioDAOJDBC {
 
 	private Connection con = null;
-
+	private static Logger logger = LogManager.getLogger(Fichero.class);
+	
 	public UsuarioDAOJDBC() {
 		this.con = new Conex().getConex();
 	}
@@ -34,7 +40,10 @@ public class UsuarioDAOJDBC {
 				throw new DAOException("Error añadiendo usuario");
 			}
 		} catch (SQLException se) {
+			logger.warn("Error " + se.getMessage());
 			throw new DAOException("Error añadiendo usuario en DAO", se);
+			
+			
 		}
 	}
 
@@ -47,6 +56,7 @@ public class UsuarioDAOJDBC {
 				throw new DAOException("Error modificando usuario");
 			}
 		} catch (SQLException se) {
+			logger.warn("Error " + se.getMessage());
 			throw new DAOException("Error modificando usuario en DAO", se);
 		}
 	}
@@ -62,6 +72,7 @@ public class UsuarioDAOJDBC {
 				throw new DAOException("Error borrando usuario");
 			}
 		} catch (SQLException se) {
+			logger.warn("Error " + se.getMessage());
 			throw new DAOException("Error borrando usuario en DAO", se);
 		}
 	}
@@ -79,6 +90,7 @@ public class UsuarioDAOJDBC {
 			return (new Usuario(rs.getInt("ID_USUARIO"), rs.getString("NOMBRE"), rs.getString("FECHA_NACIMIENTO"),
 					rs.getString("CIUDAD"), rs.getString("NOMBRE_AB")));
 		} catch (SQLException se) {
+			logger.warn("Error " + se.getMessage());
 			throw new DAOException("Error buscando usuario en DAO", se);
 		}
 	}
@@ -94,6 +106,7 @@ public class UsuarioDAOJDBC {
 			}
 
 		} catch (SQLException se) {
+			logger.warn("Error " + se.getMessage());
 			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
 		}
 		return user;
@@ -118,13 +131,14 @@ public class UsuarioDAOJDBC {
 		ArrayList<Pelicula> peli = new ArrayList<>();
 		Pelicula p;
 		try (Statement stmt = con.createStatement()) {
-			ResultSet rs = stmt.executeQuery("select p.nombre_pel from pelicula p join categoria c on p.categoria_id=c.id_categoria join abono_categoria a on a.categoria_id=c.categoria_id join abono n on n.id_abono=a.abono_id");
+			ResultSet rs = stmt.executeQuery("select p.* from pelicula p join categoria c on p.categoria_id=c.id_categoria join abono_categoria a on a.categoria_id=c.categoria_id join abono n on n.id_abono=a.abono_id");
 			while (rs.next()) {
 				p = new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA"), rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA"));
 				peli.add(p);
 			}
 
 		} catch (SQLException se) {
+			logger.warn("Error " + se.getMessage());
 			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
 		}
 		return peli;
@@ -142,6 +156,7 @@ public class UsuarioDAOJDBC {
 				noVistas.add(new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA"), rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA")));
 			}
 		} catch (SQLException se) {
+			logger.warn("Error " + se.getMessage());
 			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
 		}
 
