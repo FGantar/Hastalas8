@@ -8,7 +8,7 @@ import model.Categoria;
 
 public class CategoriaDAOJDBC {
 	
-	/*
+	/**
 	 * Especificamos como el nos conectaremos a la BBDD
 	 */
 	
@@ -18,7 +18,7 @@ public class CategoriaDAOJDBC {
 		this.con = new Conex().getConex();
 	}
 	
-	/*
+	/**
 	 * Metoto para añadir una nueva categoria
 	 */
 	
@@ -34,7 +34,7 @@ public class CategoriaDAOJDBC {
 		}
 	}
 	
-	/*
+	/**
 	 * Metodo para modificar las categorias de la BBDD
 	 */
 	

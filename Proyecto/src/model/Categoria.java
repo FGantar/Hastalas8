@@ -4,14 +4,14 @@ import utilidades.LeerDatos;
 
 public class Categoria {
 
-	 /* 
+	 /** 
 	 *Propiedades de la clase categoria
 	 */
 	
 	private int id;
 	private String nombre;
 	
-	/*
+	/**
 	 * Constructores: vacio y con todos los parametros
 	 */
 	
@@ -25,7 +25,7 @@ public class Categoria {
 		this.nombre = nombre;
 	}
 	
-	/*
+	/**
 	 * Getters y setters
 	 */
 	
@@ -45,7 +45,7 @@ public class Categoria {
 		this.nombre = nombre;
 	}
 	
-	/*
+	/**
 	 * To String, HashCode y equals
 	 */
 
@@ -82,7 +82,7 @@ public class Categoria {
 		return "Categoria [id=" + id + ", nombre=" + nombre + "]";
 	}
 	
-	/*
+	/**
 	 * Metodo generador de Categorias
 	 */
 	
