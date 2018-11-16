@@ -2,16 +2,17 @@ package servicios;
 
 import java.util.ArrayList;
 
-<<<<<<< HEAD
+import dao.DAOException;
 import dao.PeliculaDAOJDBC;
+import model.Pelicula;
 
 public class ServiciosPelicula implements OperacionesImpl {
 	
 	private PeliculaDAOJDBC peliculaDAO=new PeliculaDAOJDBC();
 
 	@Override
-	public void annadir(Object objeto) {
-		// TODO Auto-generated method stub
+	public void annadir(Object objeto) throws DAOException {
+		peliculaDAO.annadirPelicula((Pelicula)objeto);
 		
 	}
 
@@ -27,66 +28,20 @@ public class ServiciosPelicula implements OperacionesImpl {
 		
 	}
 
-	@Override
-	public ArrayList mostrarTodo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 	public void peliculasMasVistas(Pelicula p){
-		peliculaDAO.peliculasVistas(p);
+		peliculaDAO.peliculasMasVistas(p);
 	}
 	
 	public void peliculasMasValoradas(Pelicula p){
-		peliculaDAO.peliculasVistas(p);
+		peliculaDAO.peliculasMasValoradas(p);
 	}
 	
-
-	
-
-=======
-import model.Pelicula;
-import model.Usuario;
-
-/**
- * Implementar la interfaz Genérica OperacionesImpl
- */
-
-public class ServiciosPelicula implements OperacionesImpl<Pelicula>{
-	
-	/**
-	 * Crear objeto pelicula de la clase PeliculaDAOJDBC
-	 */
-
-	PeliculaDAOJDBC pelicula = new PeliculaDAOJDBC();
-	
-	/**
-	 * Métodos de la Interfaz
-	 */
-	
-	@Override
-	public void annadir(Pelicula pelicula) {
-		pelicula.annadirPelicula(pelicula);
-		
-	}
-
-	@Override
-	public void modificar(Pelicula pelicula) {
-		pelicula.modificarPelicula(pelicula);
-		
-	}
-
-	@Override
-	public void borrar(Pelicula objeto) {
-		System.out.println("Servivio proximo");
-		
-	}
 
 	@Override
 	public ArrayList<Pelicula> mostrarTodo() {
 		
-		return pelicula.getListaPeliculas();
+		return peliculaDAO.getListaPeliculas();
 	}
->>>>>>> branch 'master' of https://github.com/FGantar/Hastalas8.git
 }
