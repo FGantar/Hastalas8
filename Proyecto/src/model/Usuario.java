@@ -10,6 +10,8 @@ package model;
  *
  */
 
+// prueba
+
 public class Usuario {
 
 	// ATRIBUTOS
