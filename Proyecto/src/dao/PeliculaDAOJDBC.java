@@ -116,5 +116,20 @@ public class PeliculaDAOJDBC {
 		}
 		return films;
 	}
+	
+	public Pelicula peliculaMasVista() throws DAOException{
+		Pelicula film = null;
+		try(Statement stmt=con.createStatement()){
+			String query="SELECT * FROM PELICULA ORDER BY VISTA DESC LIMIT 1";
+			ResultSet rs=stmt.executeQuery(query);
+			if(rs.next()){
+			film=new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA"),
+						rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA"));
+			}
+		} catch (SQLException se) {
+			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
+		}
+		return film;
+	}
 
 }
