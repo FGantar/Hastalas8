@@ -12,10 +12,10 @@ public interface OperacionesImpl<T> {
 	
 	public void annadir(T objeto) throws DAOException;
 	
-	public void modificar(T objeto);
+	public void modificar(T objeto) throws DAOException;
 	
-	public void borrar(T objeto);
+	public void borrar(T objeto) throws DAOException;
 	
-	public ArrayList<T> mostrarTodo();
+	public ArrayList<T> mostrarTodo() throws DAOException;
 
 }
