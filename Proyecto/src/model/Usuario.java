@@ -12,6 +12,8 @@ import utilidades.LeerDatos;
  *
  */
 
+// prueba
+
 public class Usuario {
 
 	// ATRIBUTOS
