@@ -19,7 +19,7 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario> {
 	UsuarioDAOJDBC usuario = new UsuarioDAOJDBC();
 	
 	/**
-	 * Métodos de la Interfaz
+	 * Métodos de la Interfaz genérica implementada OperacionesImpl
 	 */
 	
 	@Override
@@ -42,6 +42,9 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario> {
 		
 		return usuario.getListaUsuarios();
 	}
+	
+	/** Método que muestra las películas que el usuario puede ver.
+	 */
 	
 	public void peliculasQuePuedeVer(Usuario user){
 		

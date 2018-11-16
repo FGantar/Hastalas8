@@ -6,42 +6,51 @@ import dao.DAOException;
 import dao.PeliculaDAOJDBC;
 import model.Pelicula;
 
-public class ServiciosPelicula implements OperacionesImpl {
+/**
+ * Implementar la interfaz Genérica OperacionesImpl
+ */
+
+public class ServiciosPelicula implements OperacionesImpl<Pelicula> {
 	
-	private PeliculaDAOJDBC peliculaDAO=new PeliculaDAOJDBC();
+	/**
+	 * Crear objeto usuario de la clase PeliculaDAOJDBC
+	 */
+	
+	private PeliculaDAOJDBC peliculaDAO = new PeliculaDAOJDBC();
+	
+	/**
+	 * Métodos de la Interfaz genérica implementada OperacionesImpl
+	 */
 
 	@Override
-	public void annadir(Object objeto) throws DAOException {
-		peliculaDAO.annadirPelicula((Pelicula)objeto);
-		
+	public void annadir(Pelicula pelicula) throws DAOException {
+		peliculaDAO.annadirPelicula(pelicula);
 	}
 
 	@Override
-	public void modificar(Object objeto) {
-		
-		
+	public void modificar(Pelicula p) {
 	}
 
 	@Override
-	public void borrar(Object objeto) {
-		peliculaDAO.borrarPelicula();
-		
-	}
-
-	
-	
-	public void peliculasMasVistas(Pelicula p){
-		peliculaDAO.peliculasMasVistas(p);
+	public void borrar(Pelicula p) {
 	}
 	
-	public void peliculasMasValoradas(Pelicula p){
-		peliculaDAO.peliculasMasValoradas(p);
-	}
-	
-
 	@Override
 	public ArrayList<Pelicula> mostrarTodo() {
-		
 		return peliculaDAO.getListaPeliculas();
 	}
+	
+	/** Método que muestra la película más vista por los usuarios y método que muestra la más valorada.
+	 */
+	
+	public void peliculasMasVistas(){
+		peliculaDAO.peliculaMasVista();
+	}
+	
+	public void peliculasMasValoradas(){
+		peliculaDAO.peliculaMasValorada();
+	}
+	
+
+	
 }
