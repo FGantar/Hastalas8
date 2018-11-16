@@ -7,6 +7,10 @@ import java.sql.SQLException;
 public class Conex {
 
 	private Connection con;
+	
+	/**
+	 * Creamos el método conectar/cerrar conexion para poder establecer comunicación Java-MySQL.
+	 */
 
 	public Connection getConex() {
 

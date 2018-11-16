@@ -5,9 +5,21 @@ import java.util.ArrayList;
 import model.Pelicula;
 import model.Usuario;
 
+/**
+ * Implementar la interfaz Genérica OperacionesImpl
+ */
+
 public class ServiciosPelicula implements OperacionesImpl<Pelicula>{
+	
+	/**
+	 * Crear objeto pelicula de la clase PeliculaDAOJDBC
+	 */
 
 	PeliculaDAOJDBC pelicula = new PeliculaDAOJDBC();
+	
+	/**
+	 * Métodos de la Interfaz
+	 */
 	
 	@Override
 	public void annadir(Pelicula pelicula) {
@@ -29,10 +41,7 @@ public class ServiciosPelicula implements OperacionesImpl<Pelicula>{
 
 	@Override
 	public ArrayList<Pelicula> mostrarTodo() {
-		System.out.println("Servivio proximo");
-		return null;
+		
+		return pelicula.getListaPeliculas();
 	}
-	
-	
-
 }

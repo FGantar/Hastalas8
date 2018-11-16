@@ -5,9 +5,21 @@ import java.util.ArrayList;
 
 import model.Usuario;
 
+/**
+ * Implementar la interfaz Genérica OperacionesImpl
+ */
+
 public class ServiciosUsuario implements OperacionesImpl<Usuario> {
+	
+	/**
+	 * Crear objeto usuario de la clase UsuarioDAOJDBC
+	 */
 
 	UsuarioDAOJDBC usuario = new UsuarioDAOJDBC();
+	
+	/**
+	 * Métodos de la Interfaz
+	 */
 	
 	@Override
 	public void annadir(Usuario usuario) {
@@ -29,9 +41,6 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario> {
 		
 		return usuario.getListaUsuarios();
 	}
-	
-	
-
 }
 
 
