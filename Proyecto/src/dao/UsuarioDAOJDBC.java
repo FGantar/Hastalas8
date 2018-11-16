@@ -96,5 +96,24 @@ public class UsuarioDAOJDBC {
 		}
 		return user;
 	}
+	
+	public  throws DAOException {
+		ArrayList<Usuario> user = new ArrayList<>();
+		try (Statement stmt = con.createStatement()) {
+			String query = "SELECT * FROM USUARIO";
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				user.add(new Usuario(rs.getInt("ID_USUARIO"), rs.getString("NOMBRE"), rs.getString("FECHA_NACIMIENTO"),
+						rs.getString("CIUDAD")));
+			}
+
+		} catch (SQLException se) {
+			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
+		}
+		return user;
+	}
+	
+	
+	
 
 }

@@ -3,6 +3,8 @@ package servicios;
 
 import java.util.ArrayList;
 
+import model.Usuario;
+
 public class ServiciosUsuario implements OperacionesImpl<Usuario> {
 
 	UsuarioDAOJDBC usuario = new UsuarioDAOJDBC();

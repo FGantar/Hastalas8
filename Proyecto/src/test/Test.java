@@ -2,11 +2,13 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 import model.Usuario;
 import dao.Conex;
+import dao.UsuarioDAOJDBC;
 
 public class Test {
 
@@ -39,6 +41,7 @@ public class Test {
 		int contBefore;
 		int contAfter;
 		int idPrueba;
+		
 		UsuarioDAOJDBC userDAO = new UsuarioDAOJDBC();
 
 		con = new Conex().getConex();

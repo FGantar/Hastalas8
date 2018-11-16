@@ -110,17 +110,20 @@ public class Usuario {
 	
 	public void setAbono(String abono){
 		this.abono=abono;
+		
 	}
 
 	/**
 	 * Crea un usuario pidiendo los valores de los atributos por teclado
 	 */
 	public void creadorUsuario() {
-		this.setIdUsuario(LectorDatos.leerInt("Introduce la id del usuario: "));
-		this.setNombre(LectorDatos.leerString("Introduce el nombre del usuario: "));
-		this.setFechaNacimiento(LectorDatos.leerString("Introduce la fecha de nacimiento del usuario: "));
-		this.setCiudad(LectorDatos.leerString("Introduce el nombre de la ciudad: "));
-		this.setAbono(LectorDatos.leerString("Introduce el abono del usuario (basico, extra, premium): ").toUpperCase());
+		
+		
+		this.setIdUsuario(LeerDatos.leerInt("Introduce la id del usuario: "));
+		this.setNombre(LeerDatos.leerString("Introduce el nombre del usuario: "));
+		this.setFechaNacimiento(LeerDatos.leerString("Introduce la fecha de nacimiento del usuario: "));
+		this.setCiudad(LeerDatos.leerString("Introduce el nombre de la ciudad: "));
+		this.setAbono(LeerDatos.leerString("Introduce el abono del usuario (basico, extra, premium): ").toUpperCase());
 	}
 
 }
