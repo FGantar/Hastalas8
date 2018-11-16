@@ -23,11 +23,13 @@ public class Pelicula {
 		super();
 	}
 
-	public Pelicula(String nombre, int anno, int categoria, int id) {
+	public Pelicula(String nombre, int anno, int categoria, int vista, int valoracion, int id) {
 		super();
 		this.nombre = nombre;
 		this.anno = anno;
 		this.categoria = categoria;
+		this.vista=vista;
+		this.valoracion=valoracion;
 		this.id = id;
 	}
 
