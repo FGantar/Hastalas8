@@ -1,5 +1,7 @@
 package model;
 
+import utilidades.LeerDatos;
+
 /**
  * 
  * Clase Usuario Contiene información del usuario y un método para crear nuevos
