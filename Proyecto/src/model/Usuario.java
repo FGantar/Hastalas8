@@ -1,5 +1,7 @@
 package model;
 
+import utilidades.LeerDatos;
+
 /**
  * 
  * Clase Usuario Contiene información del usuario y un método para crear nuevos
@@ -10,7 +12,7 @@ package model;
  *
  */
 
-// prueba
+// prueba2
 
 public class Usuario {
 
@@ -112,12 +114,14 @@ public class Usuario {
 
 	public void setAbono(String abono) {
 		this.abono = abono;
+
 	}
 
 	/**
 	 * Crea un usuario pidiendo los valores de los atributos por teclado
 	 */
 	public void creadorUsuario() {
+
 		this.setIdUsuario(LeerDatos.leerInt("Introduce la id del usuario: "));
 		this.setNombre(LeerDatos.leerString("Introduce el nombre del usuario: "));
 		this.setFechaNacimiento(LeerDatos.leerString("Introduce la fecha de nacimiento del usuario: "));
@@ -139,6 +143,7 @@ public class Usuario {
 			System.out.println("Abono no válido");
 		}
 		return idAb;
+
 	}
 
 }
