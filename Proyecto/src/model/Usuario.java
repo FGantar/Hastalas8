@@ -146,4 +146,23 @@ public class Usuario {
 
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Usuario [idUsuario=");
+		builder.append(idUsuario);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", fechaNacimiento=");
+		builder.append(fechaNacimiento);
+		builder.append(", ciudad=");
+		builder.append(ciudad);
+		builder.append(", abono=");
+		builder.append(abono);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
+
 }

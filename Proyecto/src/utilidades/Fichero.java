@@ -14,6 +14,11 @@ import org.apache.logging.log4j.Logger;
 public class Fichero {
 	
 private static Logger logger = LogManager.getLogger(Fichero.class);
+
+/**
+ * Crear Métodos estáticos para leer ficheros y escribir ficheros.
+ * Utilizado para leer la lista de 25 peliculas del archivo "Peliculas.txt".
+ */
 	
 	public static ArrayList<String> LeerFichero(String rutaFichero)
 	{

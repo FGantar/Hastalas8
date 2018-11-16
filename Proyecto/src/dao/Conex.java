@@ -4,9 +4,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Conex {
 
 	private Connection con;
+	private Logger logger = LogManager.getLogger(Conex.class);
+	
+	/**
+	 * Creamos el método conectar/cerrar conexion para poder establecer comunicación Java-MySQL.
+	 */
 
 	public Connection getConex() {
 
@@ -20,7 +28,7 @@ public class Conex {
 			con = DriverManager.getConnection(driverUrl, user, password);
 
 		} catch (Exception e) {
-			System.out.println("ERROR" + e.getMessage());
+			logger.warn("Error" + e.getMessage());
 		}
 
 		return con;
