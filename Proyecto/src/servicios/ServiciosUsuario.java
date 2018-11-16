@@ -30,6 +30,13 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario> {
 		return usuario.getListaUsuarios();
 	}
 	
+	public void peliculasQuePuedeVer(Usuario user){
+		
+		usuario.peliculaQuePuedeVer();
+		
+		
+		
+	}
 	
 
 }

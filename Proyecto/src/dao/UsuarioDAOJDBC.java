@@ -109,6 +109,21 @@ public class UsuarioDAOJDBC {
 		}
 	}
 	
+	public ArrayList<Pelicula> (Usuario usuario) throws DAOException {
+		ArrayList<Pelicula> peli=  new ArrayList<>();
+		Pelicula p = new Pelicula();
+		try (Statement stmt = con.createStatement()) {
+			ResultSet rs = stmt.executeQuery("select p.nombre_pel from pelicula p join usuario_categoria u");
+			while(rs.next()) {
+				 prs.getString("nombre_pel");
+			}
+			
+			return 
+
+		} catch (SQLException se) {
+			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
+		}
+	}
 	
 	
 
