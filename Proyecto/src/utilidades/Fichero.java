@@ -16,7 +16,7 @@ public class Fichero {
 private static Logger logger = LogManager.getLogger(Fichero.class);
 
 /**
- * Crear Métodos estáticos para leer ficheros y escribir ficheros.
+ * Crear Método estático para leer ficheros.
  * Utilizado para leer la lista de 25 peliculas del archivo "Peliculas.txt".
  */
 	
@@ -45,22 +45,4 @@ private static Logger logger = LogManager.getLogger(Fichero.class);
 		
 		return ficheroString;
 	}
-	
-	public static void EscribirFichero(String rutaFichero, String lineaEscribir){
-		File fichero = new File(rutaFichero);
-
-		try {
-			FileWriter fw = new FileWriter(fichero,true); 
-			PrintWriter pw = new PrintWriter(fw);		
-			 
-			pw.println(lineaEscribir);
-			pw.close();
-			
-			}
-		catch (IOException e) {
-			logger.error(e.getMessage());
-		} 
-	}
-	
-
 }

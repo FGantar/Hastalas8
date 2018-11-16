@@ -20,8 +20,7 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario> {
 	UsuarioDAOJDBC usuarioDAO = new UsuarioDAOJDBC();
 	
 	/**
-	 * Métodos de la Interfaz
-	 * @throws DAOException 
+	 * Métodos de la Interfaz genérica implementada OperacionesImpl
 	 */
 	
 	@Override
@@ -41,9 +40,11 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario> {
 
 	@Override
 	public ArrayList<Usuario> mostrarTodo() throws DAOException {
+		return usuarioDAO.getListaUsuarios();}
 		
-		return usuarioDAO.getListaUsuarios();
-	}
+	/** Método que muestra las películas que el usuario puede ver.
+	*/
+	
 	
 	public void peliculasQuePuedeVer(Usuario user){
 		

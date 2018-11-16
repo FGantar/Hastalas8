@@ -131,7 +131,7 @@ public class UsuarioDAOJDBC {
 		ArrayList<Pelicula> peli = new ArrayList<>();
 		Pelicula p;
 		try (Statement stmt = con.createStatement()) {
-			ResultSet rs = stmt.executeQuery("select p.nombre_pel from pelicula p join categoria c on p.categoria_id=c.id_categoria join abono_categoria a on a.categoria_id=c.categoria_id join abono n on n.id_abono=a.abono_id");
+			ResultSet rs = stmt.executeQuery("select p.* from pelicula p join categoria c on p.categoria_id=c.id_categoria join abono_categoria a on a.categoria_id=c.categoria_id join abono n on n.id_abono=a.abono_id");
 			while (rs.next()) {
 				p = new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA"), rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA"));
 				peli.add(p);
