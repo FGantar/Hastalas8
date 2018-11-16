@@ -17,9 +17,14 @@ public class PeliculaDAOJDBC {
 
 	public void annadirPelicula(Pelicula film) throws DAOException {
 		try (Statement stmt = con.createStatement()) {
+<<<<<<< HEAD
 			String query = "INSERT INTO PELICULA VALUES (" + film.getIdPelicula() + "," + "'" + film.getNombre() + "',"
 					+ film.getAnno() + "," + film.getCategoria() + "," + film.getVistas() + "," + film.getValoracion()
 					+ ")";
+=======
+			String query = "INSERT INTO PELICULA VALUES (" + film.getId() + "," + "'" + film.getNombre() + "',"
+				 + film.getAnno() + ","  + film.getCategoria() + "," + film.getVista() + "," + film.getValoracion() + ")";
+>>>>>>> branch 'master' of https://github.com/FGantar/Hastalas8.git
 			if (stmt.executeUpdate(query) != 1) {
 				throw new DAOException("Error al añadir pelicula");
 			}

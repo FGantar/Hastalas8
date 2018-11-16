@@ -1,7 +1,5 @@
 package dao;
 
-import model.Pelicula;
-
 /**
  * 
  * Clase UsuarioDAOJDBC
@@ -12,6 +10,7 @@ import model.Pelicula;
  *
  */
 
+import model.Pelicula;
 import model.Usuario;
 import java.sql.Statement;
 import java.sql.Connection;
@@ -67,7 +66,7 @@ public class UsuarioDAOJDBC {
 		}
 	}
 
-	public Usuario buscarPorID(int idUsuario) {
+	public Usuario buscarPorID(int idUsuario) throws DAOException {
 		try (Statement stmt = con.createStatement()) {
 			String query = "SELECT U.ID_USUARIO, U.NOMBRE, U.FECHA_NACIMIENTO, U.CIUDAD, A.NOMBRE FROM USUARIO AS U, ABONO AS A WHERE USUARIO WHERE U.ID_USUARIO="
 					+ idUsuario + " & U.ID_ABONO=A.ID_ABONO";
@@ -80,7 +79,7 @@ public class UsuarioDAOJDBC {
 			return (new Usuario(rs.getInt("ID_USUARIO"), rs.getString("NOMBRE"), rs.getString("FECHA_NACIMIENTO"),
 					rs.getString("CIUDAD"), rs.getString("NOMBRE_AB")));
 		} catch (SQLException se) {
-			throw new DAOException("Error buscando usuario DAO", se);
+			throw new DAOException("Error buscando usuario en DAO", se);
 		}
 	}
 
@@ -101,35 +100,35 @@ public class UsuarioDAOJDBC {
 	}
 
 	public int buscar(String query) throws DAOException {
+		int idBuscar = 0;
 		try (Statement stmt = con.createStatement()) {
+
 			ResultSet rs = stmt.executeQuery(query);
 			if (rs.next()) {
-				return rs.getInt(1);
+				idBuscar = rs.getInt("ID_USUARIO");
 			}
 
 		} catch (SQLException se) {
 			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
 		}
+		return idBuscar;
 	}
 
-	public ArrayList<Pelicula> (Usuario usuario) throws DAOException {
-		ArrayList<Pelicula> peli=  new ArrayList<>();
+	public ArrayList<Pelicula> peliculasQuePuedeVer(Usuario usuario) throws DAOException {
+		ArrayList<Pelicula> peli = new ArrayList<>();
 		Pelicula p;
 		try (Statement stmt = con.createStatement()) {
 			ResultSet rs = stmt.executeQuery("select p.nombre_pel from pelicula p join usuario_categoria u");
-			while(rs.next()) {
-				 p=new Pelicula(rs.getString("nombre_pel"),rs.getInt("anno_estreno"),rs.getInt("categoria"),rs.getInt("id_pelicula"));
-				 peli.add(p);
+			while (rs.next()) {
+				p = new Pelicula(rs.getString("nombre_pel"), rs.getInt("anno_estreno"), rs.getInt("categoria_id"),
+						rs.getInt("id_pelicula"));
+				peli.add(p);
 			}
-			
-			
 
 		} catch (SQLException se) {
 			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
 		}
 		return peli;
 	}
-	
-	
 
 }
