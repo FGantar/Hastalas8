@@ -13,6 +13,7 @@ public class Pelicula {
 	private int categoria;
 	private int vista;
 	private int valoracion;
+	private int id;
 	
 	/**
 	 * Constructores: vacío y con todos los parámetros
@@ -21,14 +22,15 @@ public class Pelicula {
 	public Pelicula() {
 		super();
 	}
-	
 
-	public Pelicula(String nombre, int anno, int categoria) {
+	public Pelicula(String nombre, int anno, int categoria, int id) {
 		super();
 		this.nombre = nombre;
 		this.anno = anno;
 		this.categoria = categoria;
+		this.id = id;
 	}
+
 
 	/**
 	 * Getters y setters
@@ -75,16 +77,18 @@ public class Pelicula {
 		this.valoracion = valoracion;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+
 	/**
 	 * To String, HasCode and equals
 	 */
-	
-	@Override
-	public String toString() {
-		return "Pelicula [nombre=" + nombre + ", anno=" + anno + ", categoria=" + categoria + ", vista=" + vista
-				+ ", valoracion=" + valoracion + "]";
-	}
-
 
 	@Override
 	public int hashCode() {
@@ -92,12 +96,12 @@ public class Pelicula {
 		int result = 1;
 		result = prime * result + anno;
 		result = prime * result + categoria;
+		result = prime * result + id;
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + valoracion;
 		result = prime * result + vista;
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -112,6 +116,8 @@ public class Pelicula {
 			return false;
 		if (categoria != other.categoria)
 			return false;
+		if (id != other.id)
+			return false;
 		if (nombre == null) {
 			if (other.nombre != null)
 				return false;
@@ -123,6 +129,12 @@ public class Pelicula {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Pelicula [nombre=" + nombre + ", anno=" + anno + ", categoria=" + categoria + ", vista=" + vista
+				+ ", valoracion=" + valoracion + ", id=" + id + "]";
+	}
 	
 	/**
 	 * Metodo generador de peliculas
@@ -130,6 +142,7 @@ public class Pelicula {
 	
 	public void generadorPeliculas(){
 		
+		this.setId(LeerDatos.leerInt("ID película: "));
 		this.setNombre(LeerDatos.leerString("Nombre de la película: "));
 		this.setAnno(LeerDatos.leerInt("Año: "));
 		this.setCategoria(LeerDatos.leerInt("Pulsa 1;Policiaca. /nPulsa 2; Romántica. /nPulsa 3; Aventuras./nPulsa 4; Comedia./nPulsa 5; Animación./nPulsa 6; Thriller."));
