@@ -118,10 +118,9 @@ public class UsuarioDAOJDBC {
 		ArrayList<Pelicula> peli = new ArrayList<>();
 		Pelicula p;
 		try (Statement stmt = con.createStatement()) {
-			ResultSet rs = stmt.executeQuery("select p.nombre_pel from pelicula p join usuario_categoria u");
+			ResultSet rs = stmt.executeQuery("select p.nombre_pel from pelicula p join categoria c on p.categoria_id=c.id_categoria join abono_categoria a on a.categoria_id=c.categoria_id join abono n on n.id_abono=a.abono_id");
 			while (rs.next()) {
-				p = new Pelicula(rs.getString("nombre_pel"), rs.getInt("anno_estreno"), rs.getInt("categoria_id"),
-						rs.getInt("id_pelicula"));
+				p = new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA"), rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA"));
 				peli.add(p);
 			}
 
@@ -129,6 +128,24 @@ public class UsuarioDAOJDBC {
 			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
 		}
 		return peli;
+	}
+	
+	public ArrayList<Pelicula> peliculasNoVistas(Usuario u) throws DAOException {
+
+		ArrayList<Pelicula> noVistas = new ArrayList<Pelicula>();
+
+		try (Statement stmt = con.createStatement()) {
+			String query = "SELECT P.* FROM PELICULA P, USUARIO U, USUARIO_PELICULA PU WHERE PU.ID_USUARIO!="
+					+ u.getIdUsuario() +" AND PU.ID_PELICULA=P.ID_PELICULA";
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				noVistas.add(new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA"), rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA")));
+			}
+		} catch (SQLException se) {
+			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
+		}
+
+		return noVistas;
 	}
 
 }

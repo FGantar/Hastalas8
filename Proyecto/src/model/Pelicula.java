@@ -23,11 +23,13 @@ public class Pelicula {
 		super();
 	}
 
-	public Pelicula(String nombre, int anno, int categoria, int id) {
+	public Pelicula(String nombre, int anno, int categoria, int vista, int valoracion, int id) {
 		super();
 		this.nombre = nombre;
 		this.anno = anno;
 		this.categoria = categoria;
+		this.vista=vista;
+		this.valoracion=valoracion;
 		this.id = id;
 	}
 
@@ -129,13 +131,26 @@ public class Pelicula {
 			return false;
 		return true;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Pelicula [nombre=" + nombre + ", anno=" + anno + ", categoria=" + categoria + ", vista=" + vista
-				+ ", valoracion=" + valoracion + ", id=" + id + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Pelicula [nombre=");
+		builder.append(nombre);
+		builder.append(", anno=");
+		builder.append(anno);
+		builder.append(", categoria=");
+		builder.append(categoria);
+		builder.append(", vista=");
+		builder.append(vista);
+		builder.append(", valoracion=");
+		builder.append(valoracion);
+		builder.append(", id=");
+		builder.append(id);
+		builder.append("]");
+		return builder.toString();
 	}
-	
+
 	/**
 	 * Metodo generador de peliculas
 	 */
