@@ -35,7 +35,7 @@ public class Usuario {
 	 * Ciudad de residencia del Usuario
 	 */
 	private String ciudad;
-	
+
 	/**
 	 * Abono del usuario
 	 */
@@ -105,24 +105,40 @@ public class Usuario {
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
-	
-	public String getAbono(){
+
+	public String getAbono() {
 		return abono;
 	}
-	
-	public void setAbono(String abono){
-		this.abono=abono;
+
+	public void setAbono(String abono) {
+		this.abono = abono;
 	}
 
 	/**
 	 * Crea un usuario pidiendo los valores de los atributos por teclado
 	 */
 	public void creadorUsuario() {
-		this.setIdUsuario(LectorDatos.leerInt("Introduce la id del usuario: "));
-		this.setNombre(LectorDatos.leerString("Introduce el nombre del usuario: "));
-		this.setFechaNacimiento(LectorDatos.leerString("Introduce la fecha de nacimiento del usuario: "));
-		this.setCiudad(LectorDatos.leerString("Introduce el nombre de la ciudad: "));
-		this.setAbono(LectorDatos.leerString("Introduce el abono del usuario (basico, extra, premium): ").toUpperCase());
+		this.setIdUsuario(LeerDatos.leerInt("Introduce la id del usuario: "));
+		this.setNombre(LeerDatos.leerString("Introduce el nombre del usuario: "));
+		this.setFechaNacimiento(LeerDatos.leerString("Introduce la fecha de nacimiento del usuario: "));
+		this.setCiudad(LeerDatos.leerString("Introduce el nombre de la ciudad: "));
+		this.setAbono(LeerDatos.leerString("Introduce el abono del usuario (basico, extra, premium): ").toUpperCase());
+	}
+
+	public int getIdAbono() {
+		int idAb = 0;
+		String abono = this.getAbono();
+		abono.toUpperCase();
+		if (abono.equals("BASICO")) {
+			idAb = 1;
+		} else if (abono.equals("EXTRA")) {
+			idAb = 2;
+		} else if (abono.equals("PREMIUM")) {
+			idAb = 3;
+		} else {
+			System.out.println("Abono no válido");
+		}
+		return idAb;
 	}
 
 }
