@@ -1,6 +1,8 @@
 package servicios;
 
 import java.util.ArrayList;
+
+import dao.DAOException;
 import dao.PeliculaDAOJDBC;
 import model.Pelicula;
 
@@ -9,8 +11,8 @@ public class ServiciosPelicula implements OperacionesImpl {
 	private PeliculaDAOJDBC peliculaDAO=new PeliculaDAOJDBC();
 
 	@Override
-	public void annadir(Object objeto) {
-		// TODO Auto-generated method stub
+	public void annadir(Object objeto) throws DAOException {
+		peliculaDAO.annadirPelicula((Pelicula)objeto);
 		
 	}
 
