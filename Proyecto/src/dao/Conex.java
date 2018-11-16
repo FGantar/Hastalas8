@@ -38,7 +38,7 @@ public class Conex {
 		try {
 			con.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.warn("Error " + e.getMessage());
 		}
 	}
 }
