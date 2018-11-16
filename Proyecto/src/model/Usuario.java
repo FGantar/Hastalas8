@@ -12,7 +12,7 @@ import utilidades.LeerDatos;
  *
  */
 
-// prueba
+// prueba2
 
 public class Usuario {
 
