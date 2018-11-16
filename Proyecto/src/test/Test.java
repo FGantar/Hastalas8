@@ -8,39 +8,40 @@ import java.sql.Statement;
 
 import model.Usuario;
 import dao.Conex;
-import dao.DAOException;
 import dao.UsuarioDAOJDBC;
 
 public class Test {
 
 	@org.junit.Test
-	public void anadirUsuario() throws DAOException {
-
+	public void anadirUsuario() {
+		
 		int cont, cont2;
 		Usuario u = new Usuario();
 
-		UsuarioDAOJDBC user = new UsuarioDAOJDBC();
+		UsuarioDAOJDBC user = new UsuarioDAOJDBC();		
+		
+		
 
 		cont = user.buscar("select count(*) from Usuario");
-
+		
 		u.creadorUsuario();
-
+		
 		user.annadirUsuario(u);
-
-		cont2 = user.buscar("select count(*) from Usuario");
-
-		assertEquals(cont, cont2);
-
+		
+		cont2 =user.buscar("select count(*) from Usuario");
+		
+		assertEquals(cont, cont2);	
+		
 	}
-
+	
 	@org.junit.Test
-	public void testBorrarUsuario() throws Exception {
+	public void testBorrarUsuario() {
 
 		Connection con = null;
-		int contBefore = 0;
-		int contAfter = 0;
-		int idPrueba = 0;
-
+		int contBefore;
+		int contAfter;
+		int idPrueba;
+		
 		UsuarioDAOJDBC userDAO = new UsuarioDAOJDBC();
 
 		con = new Conex().getConex();

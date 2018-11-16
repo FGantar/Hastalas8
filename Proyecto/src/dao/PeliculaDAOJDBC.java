@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import model.Pelicula;
 import model.Usuario;
 
 public class PeliculaDAOJDBC {
@@ -16,8 +17,8 @@ public class PeliculaDAOJDBC {
 
 	public void annadirPelicula(Pelicula film) throws DAOException {
 		try (Statement stmt = con.createStatement()) {
-			String query = "INSERT INTO PELICULA VALUES (" + film.getIdPelicula() + "," + "'" + film.getNombre() + "',"
-				 + film.getAnno() + ","  + film.getCategoria() + "," + film.getVistas() + "," + film.getValoracion() + ")";
+			String query = "INSERT INTO PELICULA VALUES (" + film.getId() + "," + "'" + film.getNombre() + "',"
+				 + film.getAnno() + ","  + film.getCategoria() + "," + film.getVista() + "," + film.getValoracion() + ")";
 			if (stmt.executeUpdate(query) != 1) {
 				throw new DAOException("Error añadiendo usuario");
 			}
