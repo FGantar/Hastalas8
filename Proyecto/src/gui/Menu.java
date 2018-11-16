@@ -7,8 +7,6 @@ import utilidades.LeerDatos;
 
 public class Menu {
 	
-	private static ServiciosUsuario sv= new ServiciosUsuario();
-	
 	public static void menu(){
 		
 		int i =LeerDatos.leerInt("Introduce un numero");
@@ -37,6 +35,7 @@ public class Menu {
 	
 	public static void menuUsuario(){
 		
+		ServiciosUsuario sv= new ServiciosUsuario();
 		int i =LeerDatos.leerInt("Introduce un numero");
 		
 		do{
@@ -50,7 +49,9 @@ public class Menu {
 		Usuario  u= new Usuario();
 		u.creadorUsuario();
 		switch(i){
-		
+		case 0:
+			menu();
+			break;
 		case 1:
 		 sv.annadir(u);
 		 break;
@@ -73,6 +74,7 @@ public class Menu {
 	
 	public static void menuPelicula(){
 		
+		ServiciosPelicula sv= new ServiciosPelicula();
 		int i =LeerDatos.leerInt("Introduce un numero");
 		Pelicula p= new Pelicula();
 		
@@ -84,21 +86,34 @@ public class Menu {
 		System.out.println("2.borrar pelicula");
 		System.out.println("3.modificar pelicula");
 		System.out.println("4.listado de pelicula");
-		System.out.println("6.pelicula mas vistas");
-		System.out.println("7.listado peliculas filtradas");
-		System.out.println("8.pelicua¡las mas valoradas");
+		System.out.println("5.pelicula mas vistas");
+		System.out.println("6.listado peliculas filtradas");
+		System.out.println("7.pelicua¡las mas valoradas");
 		
 		switch(i){
-		
+		case 0:
+			menu();
+			break;
 		case 1:
-			
+			sv.annadir(p);
 		case 2:
-			
+			 sv.borrar(p);
 		case 3:
-		
+			 sv.modificar(u);
 		case 4:
-			
+			 sv.mostrarTodo();
 		case 5:
+			//cambiar
+			 sv.mostrarTodo();
+			break;
+		case 6:
+			//cambiar
+			 sv.mostrarTodo();
+			break;
+		case 7:
+			//cambiar
+			 sv.mostrarTodo();
+			 break;
 		}
 		
 		}while(i!=0);
