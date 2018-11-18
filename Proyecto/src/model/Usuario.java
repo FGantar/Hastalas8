@@ -121,8 +121,9 @@ public class Usuario {
 
 	/**
 	 * Crea un usuario pidiendo los valores de los atributos por teclado
-	 * @throws IOException 
-	 * @throws NumberFormatException 
+	 * 
+	 * @throws IOException
+	 * @throws NumberFormatException
 	 */
 	public void creadorUsuario() throws NumberFormatException, IOException {
 
@@ -166,8 +167,5 @@ public class Usuario {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
 
 }
-

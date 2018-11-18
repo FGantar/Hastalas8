@@ -10,41 +10,42 @@ import model.Categoria;
 import model.Pelicula;
 
 public class CategoriaDAOJDBC {
-	
+
 	/**
 	 * Especificamos como el nos conectaremos a la BBDD
 	 */
-	
+
 	private Connection con = null;
-	
-	public CategoriaDAOJDBC(){
+
+	public CategoriaDAOJDBC() {
 		this.con = new Conex().getConex();
 	}
-	
+
 	/**
 	 * Metoto para añadir una nueva categoria
 	 */
-	
-	public void annadirCategoria(Categoria categoria) throws DAOException{
+
+	public void annadirCategoria(Categoria categoria) throws DAOException {
 		try (Statement stmt = con.createStatement()) {
-			
-			String query = "INSERT INTO CATEGORIA VALUES ("+categoria.getId()+","+categoria.getNombre()+")";
+
+			String query = "INSERT INTO CATEGORIA VALUES (" + categoria.getId() + "," + categoria.getNombre() + ")";
 			if (stmt.executeUpdate(query) != 1) {
-				throw new DAOException("Error al añadir categoria");}
-		
+				throw new DAOException("Error al añadir categoria");
+			}
+
 		} catch (SQLException se) {
 			throw new DAOException("Error añadiendo categoria en DAO", se);
 		}
 	}
-	
+
 	/**
 	 * Metodo para modificar las categorias de la BBDD
 	 */
-	
+
 	public void modificarCategoria(Categoria categoria) throws DAOException {
 		try (Statement stmt = con.createStatement()) {
-			String query = "UPDATE CATEGORIA SET ID_CATEGORIA='" + categoria.getId() + "',   NOMBRE_CAT='"+categoria.getNombre()+"'"+
-								"WHERE NOMBRE_CAT = '" + categoria.getNombre();
+			String query = "UPDATE CATEGORIA SET ID_CATEGORIA='" + categoria.getId() + "',   NOMBRE_CAT='"
+					+ categoria.getNombre() + "'" + "WHERE NOMBRE_CAT = '" + categoria.getNombre();
 			if (stmt.executeUpdate(query) != 1) {
 				throw new DAOException("Error modificando la categoria");
 			}
@@ -52,10 +53,9 @@ public class CategoriaDAOJDBC {
 		} catch (SQLException se) {
 			throw new DAOException("Error modificando categoria en DAO", se);
 		}
-		
-		
+
 	}
-	
+
 	/**
 	 * Metodo para mostrar todas las categorias
 	 */
@@ -73,9 +73,5 @@ public class CategoriaDAOJDBC {
 		}
 		return categorias;
 	}
-	
-	
-	
-	
 
 }

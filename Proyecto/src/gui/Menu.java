@@ -13,7 +13,6 @@ import utilidades.LeerDatos;
 
 public class Menu {
 
-
 	public static void menu() throws DAOException, NumberFormatException, IOException {
 		int i;
 		do {
@@ -150,44 +149,45 @@ public class Menu {
 		} while (i != 0);
 
 	}
-public static void menuCategorias() throws DAOException, NumberFormatException, IOException{
-		
-		int i =0;
-		
-		do{
-			
-		System.out.println("*** MENÚ DE GESTIÓN DE CATEGORÍAS ***");
-		System.out.println("* Introduzca un número para navegar: ");
-		System.out.println("0.Para volver atras");
-		System.out.println("1.Añadir categoria");
-		System.out.println("2.Modificar una categoria existente");
-		System.out.println("3.Mostrar categorias");
 
-		ServiciosCategoria sv= new ServiciosCategoria();
-	    i = LeerDatos.leerInt("Introduce un numero: ");
-		Categoria c = new Categoria();
-		
-		switch(i){
-		
-		case 0:
-		 menu();
-		break;	
-		case 1:
-			c.generadorCategorias();
-			sv.annadir(c);
-			break;
-			
-		case 2:
-			sv.modificar(c);
-			break;
-			
-		case 3:
-			System.out.println(sv.mostrarTodo());
-			break;
-		}
-		
-		}while(i!=0);
-		
-	}	
+	public static void menuCategorias() throws DAOException, NumberFormatException, IOException {
+
+		int i = 0;
+
+		do {
+
+			System.out.println("*** MENÚ DE GESTIÓN DE CATEGORÍAS ***");
+			System.out.println("* Introduzca un número para navegar: ");
+			System.out.println("0.Para volver atras");
+			System.out.println("1.Añadir categoria");
+			System.out.println("2.Modificar una categoria existente");
+			System.out.println("3.Mostrar categorias");
+
+			ServiciosCategoria sv = new ServiciosCategoria();
+			i = LeerDatos.leerInt("Introduce un numero: ");
+			Categoria c = new Categoria();
+
+			switch (i) {
+
+			case 0:
+				menu();
+				break;
+			case 1:
+				c.generadorCategorias();
+				sv.annadir(c);
+				break;
+
+			case 2:
+				sv.modificar(c);
+				break;
+
+			case 3:
+				System.out.println(sv.mostrarTodo());
+				break;
+			}
+
+		} while (i != 0);
+
+	}
 
 }

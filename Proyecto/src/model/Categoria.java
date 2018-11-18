@@ -6,31 +6,31 @@ import utilidades.LeerDatos;
 
 public class Categoria {
 
-	 /** 
-	 *Propiedades de la clase categoria
+	/**
+	 * Propiedades de la clase categoria
 	 */
-	
+
 	private int id;
 	private String nombre;
-	
+
 	/**
 	 * Constructores: vacio y con todos los parametros
 	 */
-	
-	public Categoria(){
-		
+
+	public Categoria() {
+
 	}
-	
+
 	public Categoria(int id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 	}
-	
+
 	/**
 	 * Getters y setters
 	 */
-	
+
 	public int getId() {
 		return id;
 	}
@@ -46,7 +46,7 @@ public class Categoria {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
 	/**
 	 * To String, HashCode y equals
 	 */
@@ -83,23 +83,18 @@ public class Categoria {
 	public String toString() {
 		return "Categoria [id=" + id + ", nombre=" + nombre + "]";
 	}
-	
+
 	/**
 	 * Metodo generador de Categorias
-	 * @throws IOException 
-	 * @throws NumberFormatException 
+	 * 
+	 * @throws IOException
+	 * @throws NumberFormatException
 	 */
-	
 
-	public void generadorCategorias() throws NumberFormatException, IOException{
+	public void generadorCategorias() throws NumberFormatException, IOException {
 		this.setId(LeerDatos.leerInt("ID de la categoria: "));
 		this.setNombre(LeerDatos.leerString("Nombre de la categoria: "));
-		
-		
+
 	}
-	
-	
-	
-	
 
 }

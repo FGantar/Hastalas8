@@ -11,18 +11,18 @@ import model.Categoria;
  */
 
 public class ServiciosCategoria implements OperacionesImpl<Categoria, Integer> {
-	
+
 	/**
 	 * Crear el objeto categoria de la clase CategoriaDAOJDBC
 	 */
 	private CategoriaDAOJDBC categoriaDAO = new CategoriaDAOJDBC();
 
-	
 	/**
-	 *Metodos, añadir, modificar categoria correspondientes, borrar vacio puesto que no se necesita
-	 *metodo getlistaCategoria para mostrar las categorias existantes
+	 * Metodos, añadir, modificar categoria correspondientes, borrar vacio
+	 * puesto que no se necesita metodo getlistaCategoria para mostrar las
+	 * categorias existantes
 	 */
-	
+
 	@Override
 	public void annadir(Categoria categoria) throws DAOException {
 		categoriaDAO.annadirCategoria(categoria);
@@ -31,7 +31,7 @@ public class ServiciosCategoria implements OperacionesImpl<Categoria, Integer> {
 	@Override
 	public void modificar(Categoria c) throws DAOException {
 		categoriaDAO.modificarCategoria(c);
-		
+
 	}
 
 	@Override
@@ -42,8 +42,5 @@ public class ServiciosCategoria implements OperacionesImpl<Categoria, Integer> {
 	public ArrayList<Categoria> mostrarTodo() throws DAOException {
 		return categoriaDAO.getListaPelicula();
 	}
-		
-
-	
 
 }

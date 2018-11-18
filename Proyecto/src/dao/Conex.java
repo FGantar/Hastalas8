@@ -11,9 +11,10 @@ public class Conex {
 
 	private Connection con;
 	private Logger logger = LogManager.getLogger(Conex.class);
-	
+
 	/**
-	 * Creamos el método conectar/cerrar conexion para poder establecer comunicación Java-MySQL.
+	 * Creamos el método conectar/cerrar conexion para poder establecer
+	 * comunicación Java-MySQL.
 	 */
 
 	public Connection getConex() {
