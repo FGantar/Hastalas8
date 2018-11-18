@@ -3,8 +3,10 @@ package gui;
 import java.io.IOException;
 
 import dao.DAOException;
+import model.Categoria;
 import model.Pelicula;
 import model.Usuario;
+import servicios.ServiciosCategoria;
 import servicios.ServiciosPelicula;
 import servicios.ServiciosUsuario;
 import utilidades.LeerDatos;
@@ -139,7 +141,7 @@ public class Menu {
 		
 	}	
 
-	//hacer cuando este categoria
+	
 public static void menuCategorias() throws DAOException, NumberFormatException, IOException{
 		
 		int i =0;
@@ -147,10 +149,13 @@ public static void menuCategorias() throws DAOException, NumberFormatException, 
 		do{
 		
 		System.out.println("0. para volver atras");
-		System.out.println("1.añadir pelicula");
-		System.out.println("2.borrar pelicula");
-		System.out.println("3.modificar pelicula");
-		i=LeerDatos.leerInt("Introduce un numero");
+		System.out.println("1.añadir categoria");
+		System.out.println("2.modificar categoria");
+		System.out.println("3.mostrar categorias");
+
+		ServiciosCategoria sv= new ServiciosCategoria();
+	    i = LeerDatos.leerInt("Introduce un numero: ");
+		Categoria c = new Categoria();
 		
 		switch(i){
 		
@@ -158,14 +163,17 @@ public static void menuCategorias() throws DAOException, NumberFormatException, 
 		 menu();
 		break;	
 		case 1:
+			c.generadorCategorias();
+			sv.annadir(c);
+			break;
 			
 		case 2:
+			sv.modificar(c);
+			break;
 			
 		case 3:
-		
-		case 4:
-			
-		case 5:
+			System.out.println(sv.mostrarTodo());
+			break;
 		}
 		
 		}while(i!=0);
