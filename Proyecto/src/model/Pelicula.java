@@ -1,5 +1,7 @@
 package model;
 
+import java.io.IOException;
+
 import utilidades.LeerDatos;
 
 public class Pelicula {
@@ -153,9 +155,11 @@ public class Pelicula {
 
 	/**
 	 * Metodo generador de peliculas
+	 * @throws IOException 
+	 * @throws NumberFormatException 
 	 */
 	
-	public void generadorPeliculas(){
+	public void generadorPeliculas() throws NumberFormatException, IOException{
 		
 		this.setId(LeerDatos.leerInt("ID película: "));
 		this.setNombre(LeerDatos.leerString("Nombre de la película: "));

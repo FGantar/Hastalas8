@@ -25,21 +25,27 @@ public class PeliculaDAOJDBC {
 	}
 
 	public void annadirPelicula(Pelicula film) throws DAOException {
-		System.out.println("aaaa");
-		try (Statement stmt = con.createStatement()) {
+		Pelicula pelicula = buscarPorID(film.getId());
+		if (pelicula != null) {
+			// throw new DAOException("El Usuario con id: " +
+			// user2.getIdUsuario() + " ya existe.");
+			System.out.println("La pelicula con id: " + pelicula.getId() + " ya existe.");
+		} else {
+			try (Statement stmt = con.createStatement()) {
 
-			System.out.println(film);
-			String query = "INSERT INTO PELICULA VALUES (" + film.getId() + "," + "'" + film.getNombre() + "',"
-					+ film.getAnno() + "," + film.getCategoria() + "," + film.getVista() + "," + film.getValoracion()
-					+ ")";
+				System.out.println(film);
+				String query = "INSERT INTO PELICULA VALUES (" + film.getId() + "," + "'" + film.getNombre() + "',"
+						+ film.getAnno() + "," + film.getCategoria() + "," + film.getVista() + ","
+						+ film.getValoracion() + ")";
 
-			if (stmt.executeUpdate(query) != 1) {
-				throw new DAOException("Error al añadir pelicula");
+				if (stmt.executeUpdate(query) != 1) {
+					throw new DAOException("Error al añadir pelicula");
+				}
+			} catch (SQLException se) {
+				logger.warn("ERROR" + se.getMessage());
+				throw new DAOException("Error añadiendo pelicula en DAO", se);
+
 			}
-		} catch (SQLException se) {
-			logger.warn("ERROR" + se.getMessage());
-			throw new DAOException("Error añadiendo pelicula en DAO", se);
-
 		}
 	}
 
@@ -147,6 +153,23 @@ public class PeliculaDAOJDBC {
 			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
 		}
 		return film;
+	}
+
+	public Pelicula buscarPorID(int idPelicula) throws DAOException {
+		try (Statement stmt = con.createStatement()) {
+			String query = "SELECT * FROM PELICULA WHERE ID_PELICULA=" + idPelicula;
+			ResultSet rs = stmt.executeQuery(query);
+
+			if (!rs.next()) {
+				return null;
+			}
+
+			return (new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ID_PELICULA"), rs.getInt("ANNO_ESTRENO"),
+					rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("CATEGORIA_ID")));
+		} catch (SQLException se) {
+			logger.warn("Error " + se.getMessage());
+			throw new DAOException("Error buscando usuario en DAO", se);
+		}
 	}
 
 }

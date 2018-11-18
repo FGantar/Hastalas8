@@ -1,5 +1,7 @@
 package control;
 
+import java.io.IOException;
+
 import dao.DAOException;
 import gui.Menu;
 
@@ -9,7 +11,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		try {
 			Menu.menu();
-		} catch (DAOException e) {
+		} catch (DAOException | NumberFormatException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
