@@ -1,5 +1,7 @@
 package model;
 
+import java.io.IOException;
+
 import utilidades.LeerDatos;
 
 public class Categoria {
@@ -86,7 +88,7 @@ public class Categoria {
 	 * Metodo generador de Categorias
 	 */
 	
-	public void generadorCategorias(){
+	public void generadorCategorias() throws IOException{
 		
 		this.setId(LeerDatos.leerInt("ID de la categoria: "));
 		this.setNombre(LeerDatos.leerString("Nombre de la categoria: "));
