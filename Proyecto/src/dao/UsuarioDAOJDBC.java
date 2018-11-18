@@ -171,16 +171,16 @@ public class UsuarioDAOJDBC {
 		return peli;
 	}
 
-	public ArrayList<Pelicula> peliculasNoVistas(Usuario u) throws DAOException {
+	public ArrayList<Pelicula> peliculasNoVistas(int idUsuario) throws DAOException {
 
 		ArrayList<Pelicula> noVistas = new ArrayList<Pelicula>();
 
 		try (Statement stmt = con.createStatement()) {
-			String query = "SELECT P.* FROM PELICULA P, USUARIO U, USUARIO_PELICULA PU WHERE PU.ID_USUARIO!="
-					+ u.getIdUsuario() + " AND PU.ID_PELICULA=P.ID_PELICULA";
+			String query = "SELECT P.* FROM PELICULA P, USUARIO U, USUARIO_PELICULA PU, CATEGORIA C, ABONO_CATEGORIA AC, ABONO A WHERE U.ID_USUARIO="
+					+ idUsuario + " AND PU.ID_USUARIO= "+idUsuario+ " AND P.ID_PELICULA NOT IN (SELECT PA.ID_PELICULA FROM USUARIO_PELICULA PA) AND P.CATEGORIA_ID=C.ID_CATEGORIA AND C.ID_CATEGORIA=AC.CATEGORIA_ID AND A.ID_ABONO=AC.ABONO_ID AND A.ID_ABONO=U.ID_ABONO GROUP BY P.NOMBRE_PEL";
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
-				noVistas.add(new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA"),
+				noVistas.add(new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA_ID"),
 						rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA")));
 			}
 		} catch (SQLException se) {

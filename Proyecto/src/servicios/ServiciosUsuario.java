@@ -53,7 +53,17 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario,Integer> {
 		return usuarioDAO.peliculasQuePuedeVer(idUsuario);
 		
 	}
+
+	public ArrayList<Pelicula> peliculasNoVistas(int idUsuario) throws DAOException{
+		
+		return usuarioDAO.peliculasNoVistas(idUsuario);
+		
+	}
+	
+	
 }
+
+
 
 
 	

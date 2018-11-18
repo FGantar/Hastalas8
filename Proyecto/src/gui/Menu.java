@@ -65,6 +65,7 @@ public class Menu {
 			System.out.println("3.Modificar usuario");
 			System.out.println("4.Listado de usuarios");
 			System.out.println("5.Peliculas que puede ver un usuario");
+			System.out.println("6.Peliculas que no ha visto el usuario");
 			i = LeerDatos.leerInt("Introduce un numero:");
 			Usuario u = new Usuario();
 			if (i == 1 || i == 3)
@@ -89,6 +90,9 @@ public class Menu {
 				break;
 			case 5:
 				System.out.println(sv.peliculasQuePuedeVer(LeerDatos.leerInt("Introduce el id de usuario:")));
+				break;
+			case 6:
+				System.out.println(sv.peliculasNoVistas(LeerDatos.leerInt("Introduce el id de usuario:")));
 				break;
 			}
 
