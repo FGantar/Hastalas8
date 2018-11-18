@@ -1,5 +1,7 @@
 package gui;
 
+import java.io.IOException;
+
 import dao.DAOException;
 import model.Pelicula;
 import model.Usuario;
@@ -9,9 +11,8 @@ import utilidades.LeerDatos;
 
 public class Menu {
 	
-	public static void menu() throws DAOException{
+	public static void menu() throws DAOException, NumberFormatException, IOException{
 		int i;
-		ServiciosPelicula sp= new ServiciosPelicula();
 		do{
 		
 		System.out.println("0. para salir");
@@ -35,6 +36,7 @@ public class Menu {
 			menuPelicula();
 			break;
 		case 4:
+			ServiciosPelicula sp= new ServiciosPelicula();
 			sp.cargaInicialPeliculas();
 			break;
 			
@@ -44,7 +46,7 @@ public class Menu {
 		
 	}
 	
-	public static void menuUsuario() throws DAOException{
+	public static void menuUsuario() throws DAOException, NumberFormatException, IOException{
 		
 		ServiciosUsuario sv= new ServiciosUsuario();
 		int i =0;
@@ -80,7 +82,7 @@ public class Menu {
 			System.out.println(sv.mostrarTodo());
 		 break;
 		case 5:
-			System.out.println(sv.peliculasQuePuedeVer(u));
+			System.out.println(sv.peliculasQuePuedeVer(LeerDatos.leerInt("Introduce el id de usuario")));
 		 break;
 		}
 		
@@ -88,7 +90,7 @@ public class Menu {
 		
 	}	
 	
-	public static void menuPelicula() throws DAOException{		
+	public static void menuPelicula() throws DAOException, NumberFormatException, IOException{		
 		int i = 0;
 		do{
 		
@@ -138,7 +140,7 @@ public class Menu {
 	}	
 
 	//hacer cuando este categoria
-public static void menuCategorias() throws DAOException{
+public static void menuCategorias() throws DAOException, NumberFormatException, IOException{
 		
 		int i =0;
 		

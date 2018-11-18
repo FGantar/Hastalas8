@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -40,7 +41,7 @@ public class Test {
 			
 			assertEquals(cont, cont2);	
 			
-		} catch (DAOException e) {
+		} catch (DAOException | NumberFormatException | IOException e) {
 			// TODO Auto-generated catch block
 			logger.warn("ERROR " + e.getMessage());
 		}

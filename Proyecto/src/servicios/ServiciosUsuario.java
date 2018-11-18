@@ -48,9 +48,9 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario,Integer> {
 	*/
 	
 	
-	public ArrayList<Pelicula> peliculasQuePuedeVer(Usuario user) throws DAOException{
+	public ArrayList<Pelicula> peliculasQuePuedeVer(int idUsuario) throws DAOException{
 		
-		return usuarioDAO.peliculasQuePuedeVer(user);
+		return usuarioDAO.peliculasQuePuedeVer(idUsuario);
 		
 	}
 }
