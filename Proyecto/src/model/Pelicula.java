@@ -1,5 +1,7 @@
 package model;
 
+import java.io.IOException;
+
 import utilidades.LeerDatos;
 
 public class Pelicula {
@@ -153,13 +155,18 @@ public class Pelicula {
 
 	/**
 	 * Metodo generador de peliculas
+	 * @throws IOException 
+	 * @throws NumberFormatException 
 	 */
 	
-	public void generadorPeliculas(){
+	public void generadorPeliculas() throws NumberFormatException, IOException{
 		
 		this.setId(LeerDatos.leerInt("ID película: "));
 		this.setNombre(LeerDatos.leerString("Nombre de la película: "));
 		this.setAnno(LeerDatos.leerInt("Año: "));
 		this.setCategoria(LeerDatos.leerInt("Pulsa 1;Policiaca. /nPulsa 2; Romántica. /nPulsa 3; Aventuras./nPulsa 4; Comedia./nPulsa 5; Animación./nPulsa 6; Thriller."));
+		this.setVista(LeerDatos.leerInt("Num veces que la viste: "));
+		this.setValoracion(LeerDatos.leerInt("Valoración 0/10: "));
 	}
 }
+

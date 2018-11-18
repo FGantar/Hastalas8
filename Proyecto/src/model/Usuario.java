@@ -1,5 +1,7 @@
 package model;
 
+import java.io.IOException;
+
 import utilidades.LeerDatos;
 
 /**
@@ -119,8 +121,10 @@ public class Usuario {
 
 	/**
 	 * Crea un usuario pidiendo los valores de los atributos por teclado
+	 * @throws IOException 
+	 * @throws NumberFormatException 
 	 */
-	public void creadorUsuario() {
+	public void creadorUsuario() throws NumberFormatException, IOException {
 
 		this.setIdUsuario(LeerDatos.leerInt("Introduce la id del usuario: "));
 		this.setNombre(LeerDatos.leerString("Introduce el nombre del usuario: "));
@@ -166,3 +170,4 @@ public class Usuario {
 	
 
 }
+

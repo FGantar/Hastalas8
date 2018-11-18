@@ -5,13 +5,14 @@ import java.util.ArrayList;
 
 import dao.DAOException;
 import dao.UsuarioDAOJDBC;
+import model.Pelicula;
 import model.Usuario;
 
 /**
  * Implementar la interfaz Genérica OperacionesImpl
  */
 
-public class ServiciosUsuario implements OperacionesImpl<Usuario> {
+public class ServiciosUsuario implements OperacionesImpl<Usuario,Integer> {
 	
 	/**
 	 * Crear objeto usuario de la clase UsuarioDAOJDBC
@@ -34,8 +35,8 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario> {
 	}
 
 	@Override
-	public void borrar(int IDusuario) throws DAOException{
-		usuarioDAO.borrarUsuario(IDusuario);
+	public void borrar(Integer idUsuario) throws DAOException{
+		usuarioDAO.borrarUsuario(idUsuario);
 	}
 
 	@Override
@@ -43,12 +44,13 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario> {
 		return usuarioDAO.getListaUsuarios();}
 		
 	/** Método que muestra las películas que el usuario puede ver.
+	 * @throws DAOException 
 	*/
 	
 	
-	public void peliculasQuePuedeVer(Usuario user){
+	public ArrayList<Pelicula> peliculasQuePuedeVer(int idUsuario) throws DAOException{
 		
-		usuarioDAO.peliculaQuePuedeVer();
+		return usuarioDAO.peliculasQuePuedeVer(idUsuario);
 		
 	}
 }

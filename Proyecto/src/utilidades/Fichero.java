@@ -32,7 +32,8 @@ private static Logger logger = LogManager.getLogger(Fichero.class);
 			String lineaFichero;
 			
 			while ((lineaFichero = br.readLine()) != null) {
-				ficheroString.add(lineaFichero);
+				if(lineaFichero!= "")
+					ficheroString.add(lineaFichero);
 			}
 			
 			br.close();

@@ -21,7 +21,7 @@ public class Conex {
 		try {
 
 			String driverClassName = "com.mysql.jdbc.Driver";
-			String driverUrl = "jdbc:mysql://10.90.36.8:3302/movieflix";
+			String driverUrl = "jdbc:mysql://10.90.36.8:3306/movieflix";
 			String user = "grupo4";
 			String password = "1234";
 			Class.forName(driverClassName);
@@ -29,6 +29,7 @@ public class Conex {
 
 		} catch (Exception e) {
 			logger.warn("Error" + e.getMessage());
+			e.printStackTrace();
 		}
 
 		return con;
@@ -38,7 +39,7 @@ public class Conex {
 		try {
 			con.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.warn("Error" + e.getMessage());
 		}
 	}
 }
