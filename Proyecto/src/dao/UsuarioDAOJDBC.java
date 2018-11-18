@@ -148,26 +148,27 @@ public class UsuarioDAOJDBC {
 		ArrayList<Pelicula> peli = new ArrayList<>();
 		Pelicula p;
 		Usuario user2 = buscarPorID(idUsuario);
-		/*if (user2 == null) {
-			// throw new DAOException("El Usuario con id: " +
-			// user2.getIdUsuario() + " ya existe.");
-			System.out.println("El Usuario con id: " + user2.getIdUsuario() + " no existe.");
-		} else {*/
-			try (Statement stmt = con.createStatement()) {
-				ResultSet rs = stmt.executeQuery(
-						"select p.* from pelicula p join categoria c on p.categoria_id=c.id_categoria join abono_categoria a on a.categoria_id=c.id_categoria join abono n on "
-								+ idUsuario + "=a.abono_id group by p.nombre_pel");
-				while (rs.next()) {
-					p = new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA_ID"),
-							rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA"));
-					peli.add(p);
-				}
-
-			} catch (SQLException se) {
-				logger.warn("Error " + se.getMessage());
-				throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
+		/*
+		 * if (user2 == null) { // throw new DAOException("El Usuario con id: "
+		 * + // user2.getIdUsuario() + " ya existe.");
+		 * System.out.println("El Usuario con id: " + user2.getIdUsuario() +
+		 * " no existe."); } else {
+		 */
+		try (Statement stmt = con.createStatement()) {
+			ResultSet rs = stmt.executeQuery(
+					"select p.* from pelicula p join categoria c on p.categoria_id=c.id_categoria join abono_categoria a on a.categoria_id=c.id_categoria join abono n on "
+							+ idUsuario + "=a.abono_id group by p.nombre_pel");
+			while (rs.next()) {
+				p = new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA_ID"),
+						rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA"));
+				peli.add(p);
 			}
-		//}
+
+		} catch (SQLException se) {
+			logger.warn("Error " + se.getMessage());
+			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
+		}
+		// }
 		return peli;
 	}
 
@@ -177,11 +178,13 @@ public class UsuarioDAOJDBC {
 
 		try (Statement stmt = con.createStatement()) {
 			String query = "SELECT P.* FROM PELICULA P, USUARIO U, USUARIO_PELICULA PU, CATEGORIA C, ABONO_CATEGORIA AC, ABONO A WHERE U.ID_USUARIO="
-					+ idUsuario + " AND PU.ID_USUARIO= "+idUsuario+ " AND P.ID_PELICULA NOT IN (SELECT PA.ID_PELICULA FROM USUARIO_PELICULA PA) AND P.CATEGORIA_ID=C.ID_CATEGORIA AND C.ID_CATEGORIA=AC.CATEGORIA_ID AND A.ID_ABONO=AC.ABONO_ID AND A.ID_ABONO=U.ID_ABONO GROUP BY P.NOMBRE_PEL";
+					+ idUsuario + " AND PU.ID_USUARIO= " + idUsuario
+					+ " AND P.ID_PELICULA NOT IN (SELECT PA.ID_PELICULA FROM USUARIO_PELICULA PA) AND P.CATEGORIA_ID=C.ID_CATEGORIA AND C.ID_CATEGORIA=AC.CATEGORIA_ID AND A.ID_ABONO=AC.ABONO_ID AND A.ID_ABONO=U.ID_ABONO GROUP BY P.NOMBRE_PEL";
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
-				noVistas.add(new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA_ID"),
-						rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA")));
+				noVistas.add(
+						new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA_ID"),
+								rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA")));
 			}
 		} catch (SQLException se) {
 			logger.warn("Error " + se.getMessage());
