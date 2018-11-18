@@ -5,22 +5,22 @@ import java.io.IOException;
 import utilidades.LeerDatos;
 
 public class Pelicula {
-	
+
 	/**
 	 * propiedades de la clase Pelicula
 	 */
-	
+
 	private String nombre;
 	private int anno;
 	private int categoria;
 	private int vista;
 	private int valoracion;
 	private int id;
-	
+
 	/**
 	 * Constructores: vacío y con todos los parámetros
 	 */
-	
+
 	public Pelicula() {
 		super();
 	}
@@ -30,16 +30,14 @@ public class Pelicula {
 		this.nombre = nombre;
 		this.anno = anno;
 		this.categoria = categoria;
-		this.vista=vista;
-		this.valoracion=valoracion;
+		this.vista = vista;
+		this.valoracion = valoracion;
 		this.id = id;
 	}
-
 
 	/**
 	 * Getters y setters
 	 */
-	
 
 	public String getNombre() {
 		return nombre;
@@ -88,7 +86,6 @@ public class Pelicula {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
 
 	/**
 	 * To String, HasCode and equals
@@ -133,7 +130,7 @@ public class Pelicula {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -141,8 +138,8 @@ public class Pelicula {
 		builder.append(nombre);
 		builder.append(", año de estreno=");
 		builder.append(anno);
-		builder.append(", actegoria=");
-		builder.append(categoria);
+		builder.append(", categoria=");
+		builder.append(getNombreCategoria(categoria));
 		builder.append(", vistas=");
 		builder.append(vista);
 		builder.append(", valoración=");
@@ -155,18 +152,44 @@ public class Pelicula {
 
 	/**
 	 * Metodo generador de peliculas
-	 * @throws IOException 
-	 * @throws NumberFormatException 
+	 * 
+	 * @throws IOException
+	 * @throws NumberFormatException
 	 */
-	
-	public void generadorPeliculas() throws NumberFormatException, IOException{
-		
+
+	public void generadorPeliculas() throws NumberFormatException, IOException {
+
 		this.setId(LeerDatos.leerInt("ID película: "));
 		this.setNombre(LeerDatos.leerString("Nombre de la película: "));
 		this.setAnno(LeerDatos.leerInt("Año: "));
-		this.setCategoria(LeerDatos.leerInt("Pulsa 1;Policiaca. /nPulsa 2; Romántica. /nPulsa 3; Aventuras./nPulsa 4; Comedia./nPulsa 5; Animación./nPulsa 6; Thriller."));
+		this.setCategoria(LeerDatos.leerInt(
+				"Pulsa 1: Animación. /nPulsa 2: Policíaca. /nPulsa 3: Comedia./nPulsa 4: Aventuras./nPulsa 5: Romántica./nPulsa 6: Thriller."));
 		this.setVista(LeerDatos.leerInt("Num veces que la viste: "));
 		this.setValoracion(LeerDatos.leerInt("Valoración 0/10: "));
 	}
-}
 
+	public String getNombreCategoria(int idCategoria) {
+		String nameCat = null;
+		switch (idCategoria) {
+		case 1:
+			nameCat = "Animación";
+			break;
+		case 2:
+			nameCat = "Policíaca";
+			break;
+		case 3:
+			nameCat = "Comedia";
+			break;
+		case 4:
+			nameCat = "Aventuras";
+			break;
+		case 5:
+			nameCat = "Romántica";
+			break;
+		case 6:
+			nameCat = "Thriller";
+			break;
+		}
+		return nameCat;
+	}
+}
