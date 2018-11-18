@@ -34,8 +34,7 @@ public class UsuarioDAOJDBC {
 
 	public void annadirUsuario(Usuario user) throws DAOException {
 		try (Statement stmt = con.createStatement()) {
-			String query = "INSERT INTO USUARIO VALUES (" + user.getIdUsuario() + "," + "'" + user.getNombre() + "',"
-					+ "'" + user.getFechaNacimiento() + "'," + "'" + user.getCiudad() + "')";
+			String query = "INSERT INTO USUARIO VALUES (" + user.getIdUsuario() + "," + "'" + user.getNombre() + "',"+ "'" + user.getFechaNacimiento() + "','" + user.getCiudad() + "'," + user.getIdAbono()+")";
 			if (stmt.executeUpdate(query) != 1) {
 				throw new DAOException("Error añadiendo usuario");
 			}
@@ -79,7 +78,7 @@ public class UsuarioDAOJDBC {
 
 	public Usuario buscarPorID(int idUsuario) throws DAOException {
 		try (Statement stmt = con.createStatement()) {
-			String query = "SELECT U.ID_USUARIO, U.NOMBRE, U.FECHA_NACIMIENTO, U.CIUDAD, A.NOMBRE FROM USUARIO AS U, ABONO AS A WHERE USUARIO WHERE U.ID_USUARIO="
+			String query = "SELECT U.ID_USUARIO, U.NOMBRE, U.FECHA_NACIMIENTO, U.CIUDAD, A.NOMBRE_AB FROM USUARIO AS U, ABONO AS A WHERE USUARIO WHERE U.ID_USUARIO="
 					+ idUsuario + " & U.ID_ABONO=A.ID_ABONO";
 			ResultSet rs = stmt.executeQuery(query);
 
@@ -98,7 +97,7 @@ public class UsuarioDAOJDBC {
 	public ArrayList<Usuario> getListaUsuarios() throws DAOException {
 		ArrayList<Usuario> user = new ArrayList<>();
 		try (Statement stmt = con.createStatement()) {
-			String query = "SELECT U.ID_USUARIO, U.NOMBRE, U.FECHA_NACIMIENTO, U.CIUDAD, A.NOMBRE FROM USUARIO AS U, ABONO AS A WHERE U.ID_ABONO=A.ID_ABONO";
+			String query = "SELECT U.ID_USUARIO, U.NOMBRE, U.FECHA_NACIMIENTO, U.CIUDAD, A.NOMBRE_AB FROM USUARIO AS U, ABONO AS A WHERE U.ID_ABONO=A.ID_ABONO";
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				user.add(new Usuario(rs.getInt("ID_USUARIO"), rs.getString("NOMBRE"), rs.getString("FECHA_NACIMIENTO"),
@@ -164,3 +163,4 @@ public class UsuarioDAOJDBC {
 	}
 
 }
+

@@ -25,8 +25,10 @@ public class PeliculaDAOJDBC {
 	}
 
 	public void annadirPelicula(Pelicula film) throws DAOException {
+		System.out.println("aaaa");
 		try (Statement stmt = con.createStatement()) {
 
+			System.out.println(film);
 			String query = "INSERT INTO PELICULA VALUES (" + film.getId() + "," + "'" + film.getNombre() + "',"
 					+ film.getAnno() + "," + film.getCategoria() + "," + film.getVista() + "," + film.getValoracion()
 					+ ")";
@@ -89,12 +91,12 @@ public class PeliculaDAOJDBC {
 			String[] datosPelicula = peliculaString.split(",");
 
 			if (datosPelicula.length == 6) {
-				peliculaObjeto.setId(Integer.parseInt(datosPelicula[0]));
-				peliculaObjeto.setNombre(datosPelicula[1]);
-				peliculaObjeto.setAnno(Integer.parseInt(datosPelicula[2]));
-				peliculaObjeto.setCategoria(Integer.parseInt(datosPelicula[3]));
-				peliculaObjeto.setVista(Integer.parseInt(datosPelicula[4]));
-				peliculaObjeto.setValoracion(Integer.parseInt(datosPelicula[5]));
+				peliculaObjeto.setId(Integer.parseInt(datosPelicula[0].trim()));
+				peliculaObjeto.setNombre(datosPelicula[1].trim());
+				peliculaObjeto.setAnno(Integer.parseInt(datosPelicula[2].trim()));
+				peliculaObjeto.setCategoria(Integer.parseInt(datosPelicula[3].trim()));
+				peliculaObjeto.setVista(Integer.parseInt(datosPelicula[4].trim()));
+				peliculaObjeto.setValoracion(Integer.parseInt(datosPelicula[5].trim()));
 			}
 		}
 
@@ -107,7 +109,7 @@ public class PeliculaDAOJDBC {
 			String query = "SELECT * FROM PELICULA";
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
-				films.add(new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA"),
+				films.add(new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA_ID"),
 						rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA")));
 			}
 
@@ -123,7 +125,7 @@ public class PeliculaDAOJDBC {
 			String query = "SELECT * FROM PELICULA ORDER BY VISTA DESC LIMIT 1";
 			ResultSet rs = stmt.executeQuery(query);
 			if (rs.next()) {
-				film = new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA"),
+				film = new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA_ID"),
 						rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA"));
 			}
 		} catch (SQLException se) {
@@ -138,7 +140,7 @@ public class PeliculaDAOJDBC {
 			String query = "SELECT * FROM PELICULA ORDER BY VALORACION DESC LIMIT 1";
 			ResultSet rs = stmt.executeQuery(query);
 			if (rs.next()) {
-				film = new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA"),
+				film = new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA_ID"),
 						rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA"));
 			}
 		} catch (SQLException se) {
