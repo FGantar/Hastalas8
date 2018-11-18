@@ -1,10 +1,13 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import model.Categoria;
+import model.Pelicula;
 
 public class CategoriaDAOJDBC {
 	
@@ -52,6 +55,25 @@ public class CategoriaDAOJDBC {
 		
 		
 	}
+	
+	/**
+	 * Metodo para mostrar todas las categorias
+	 */
+	public ArrayList<Categoria> getListaPelicula() throws DAOException {
+		ArrayList<Categoria> categorias = new ArrayList<>();
+		try (Statement stmt = con.createStatement()) {
+			String query = "SELECT * FROM CATEGORIA";
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				categorias.add(new Categoria(rs.getInt("ID_CATEGORIA"), rs.getString("NOMBRE_CAT")));
+			}
+
+		} catch (SQLException se) {
+			throw new DAOException("Error obteniendo las categorias en DAO: " + se.getMessage(), se);
+		}
+		return categorias;
+	}
+	
 	
 	
 	

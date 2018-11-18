@@ -1,5 +1,7 @@
 package model;
 
+import java.io.IOException;
+
 import utilidades.LeerDatos;
 
 public class Categoria {
@@ -84,9 +86,11 @@ public class Categoria {
 	
 	/**
 	 * Metodo generador de Categorias
+	 * @throws IOException 
+	 * @throws NumberFormatException 
 	 */
 	
-	public void generadorCategorias(){
+	public void generadorCategorias() throws NumberFormatException, IOException{
 		
 		this.setId(LeerDatos.leerInt("ID de la categoria: "));
 		this.setNombre(LeerDatos.leerString("Nombre de la categoria: "));
