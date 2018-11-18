@@ -18,7 +18,7 @@ public class PeliculaDAOJDBC {
 	private static Logger logger = LogManager.getLogger(Fichero.class);
 	private Connection con = null;
 
-	public static final String rutaFichero = "Peliculas.txt";
+	public static final String rutaFichero = "src/Peliculas.txt";
 
 	public PeliculaDAOJDBC() {
 		this.con = new Conex().getConex();
@@ -120,7 +120,7 @@ public class PeliculaDAOJDBC {
 			}
 
 		} catch (SQLException se) {
-			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
+			throw new DAOException("Error obteniendo las películas en DAO: " + se.getMessage(), se);
 		}
 		return films;
 	}
@@ -135,7 +135,7 @@ public class PeliculaDAOJDBC {
 						rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA"));
 			}
 		} catch (SQLException se) {
-			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
+			throw new DAOException("Error obteniendo las películas en DAO: " + se.getMessage(), se);
 		}
 		return film;
 	}
@@ -150,7 +150,7 @@ public class PeliculaDAOJDBC {
 						rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA"));
 			}
 		} catch (SQLException se) {
-			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
+			throw new DAOException("Error obteniendo las películas en DAO: " + se.getMessage(), se);
 		}
 		return film;
 	}
@@ -168,7 +168,7 @@ public class PeliculaDAOJDBC {
 					rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("CATEGORIA_ID")));
 		} catch (SQLException se) {
 			logger.warn("Error " + se.getMessage());
-			throw new DAOException("Error buscando usuario en DAO", se);
+			throw new DAOException("Error buscando película en DAO", se);
 		}
 	}
 

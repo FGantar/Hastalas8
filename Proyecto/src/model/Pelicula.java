@@ -137,19 +137,19 @@ public class Pelicula {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Pelicula [nombre=");
+		builder.append("Pelicula [Título=");
 		builder.append(nombre);
-		builder.append(", anno=");
+		builder.append(", año de estreno=");
 		builder.append(anno);
-		builder.append(", categoria=");
+		builder.append(", actegoria=");
 		builder.append(categoria);
-		builder.append(", vista=");
+		builder.append(", vistas=");
 		builder.append(vista);
-		builder.append(", valoracion=");
+		builder.append(", valoración=");
 		builder.append(valoracion);
 		builder.append(", id=");
 		builder.append(id);
-		builder.append("]");
+		builder.append("]\n");
 		return builder.toString();
 	}
 
