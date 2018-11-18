@@ -90,8 +90,8 @@ public class Categoria {
 	 * @throws NumberFormatException 
 	 */
 	
+
 	public void generadorCategorias() throws NumberFormatException, IOException{
-		
 		this.setId(LeerDatos.leerInt("ID de la categoria: "));
 		this.setNombre(LeerDatos.leerString("Nombre de la categoria: "));
 		
