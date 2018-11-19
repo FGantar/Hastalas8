@@ -38,8 +38,6 @@ public class PeliculaDAOJDBC {
 	public void annadirPelicula(Pelicula film) throws DAOException {
 		Pelicula pelicula = buscarPorID(film.getId());
 		if (pelicula != null) {
-			// throw new DAOException("El Usuario con id: " +
-			// user2.getIdUsuario() + " ya existe.");
 			System.out.println("La pelicula con id: " + pelicula.getId() + " ya existe.");
 		} else {
 			try (Statement stmt = con.createStatement()) {
@@ -68,8 +66,6 @@ public class PeliculaDAOJDBC {
 	public void modificarPelicula(Pelicula film) throws DAOException {
 		Pelicula pel = buscarPorID(film.getId());
 		if (pel == null) {
-			// throw new DAOException("El Usuario con id: " +
-			// user2.getIdUsuario() + " no existe.");
 			System.out.println("La pelicula con id: " + film.getId() + " no existe.");
 		} else {
 			try (Statement stmt = con.createStatement()) {
@@ -89,8 +85,6 @@ public class PeliculaDAOJDBC {
 	public void borrarPelicula(int idPelicula) throws DAOException {
 		Pelicula film = buscarPorID(idPelicula);
 		if (film == null) {
-			// throw new DAOException("El Usuario con id: " + idUsuario + " no
-			// existe para borrar.");
 			System.out.println("La pelicula con id: " + idPelicula + " no existe para borrar.");
 		} else {
 			try (Statement stmt = con.createStatement()) {
