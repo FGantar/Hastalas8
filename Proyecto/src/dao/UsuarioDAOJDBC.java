@@ -196,7 +196,7 @@ public class UsuarioDAOJDBC {
 	 */
 	public ArrayList<Pelicula> peliculasQuePuedeVer(int idUsuario) throws DAOException {
 		ArrayList<Pelicula> peli = new ArrayList<>();
-		Pelicula p;
+		Pelicula p = null;
 		// Usuario user2 = buscarPorID(idUsuario);
 		/*
 		 * if (user2 == null) { // throw new DAOException("El Usuario con id: "
@@ -213,6 +213,12 @@ public class UsuarioDAOJDBC {
 				p = new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA_ID"),
 						rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA"));
 				peli.add(p);
+			}
+			
+			if(p==null){
+				
+				System.out.println("no existe el usuario con la id "+idUsuario);
+				
 			}
 
 		} catch (SQLException se) {
