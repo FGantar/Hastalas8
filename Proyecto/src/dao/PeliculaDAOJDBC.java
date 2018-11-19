@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import model.Pelicula;
+import model.Usuario;
 import utilidades.Fichero;
 
 /**
@@ -77,11 +78,30 @@ public class PeliculaDAOJDBC {
 						+ film.getAnno() + "'," + "CATEGORIA_ID=" + film.getCategoria() + "," + "VISTA="
 						+ film.getVista() + ", VALORACION=" + film.getValoracion() + " WHERE ID_PELICULA=" + film.getId();
 				if (stmt.executeUpdate(query) != 1) {
-					throw new DAOException("Error modificando usuario");
+					throw new DAOException("Error modificando pelicula");
 				}
 			} catch (SQLException se) {
 				logger.warn("Error " + se.getMessage());
-				throw new DAOException("Error modificando usuario en DAO", se);
+				throw new DAOException("Error modificando pelicula en DAO", se);
+			}
+		}
+	}
+	
+	public void borrarPelicula(int idPelicula) throws DAOException {
+		Pelicula film = buscarPorID(idPelicula);
+		if (film == null) {
+			// throw new DAOException("El Usuario con id: " + idUsuario + " no
+			// existe para borrar.");
+			System.out.println("El Usuario con id: " + idPelicula + " no existe para borrar.");
+		} else {
+			try (Statement stmt = con.createStatement()) {
+				String query = "DELETE FROM PELICULA WHERE ID_PELICULA=" + idPelicula;
+				if (stmt.executeUpdate(query) != 1) {
+					throw new DAOException("Error borrando pelicula");
+				}
+			} catch (SQLException se) {
+				logger.warn("Error " + se.getMessage());
+				throw new DAOException("Error borrando pelicula en DAO", se);
 			}
 		}
 	}

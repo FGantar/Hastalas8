@@ -38,7 +38,8 @@ public class ServiciosPelicula implements OperacionesImpl<Pelicula, Integer> {
 	}
 
 	@Override
-	public void borrar(Integer idPelicula) {
+	public void borrar(Integer idPelicula) throws DAOException {
+		peliculaDAO.borrarPelicula(idPelicula);
 	}
 
 	@Override
