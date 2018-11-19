@@ -71,7 +71,7 @@ public class PeliculaDAOJDBC {
 		if (pel == null) {
 			// throw new DAOException("El Usuario con id: " +
 			// user2.getIdUsuario() + " no existe.");
-			System.out.println("El pelicula con id: " + film.getId() + " no existe.");
+			System.out.println("La pelicula con id: " + film.getId() + " no existe.");
 		} else {
 			try (Statement stmt = con.createStatement()) {
 				String query = "UPDATE PELICULA SET NOMBRE_PEL='" + film.getNombre() + "'," + "ANNO_ESTRENO='"
@@ -92,7 +92,7 @@ public class PeliculaDAOJDBC {
 		if (film == null) {
 			// throw new DAOException("El Usuario con id: " + idUsuario + " no
 			// existe para borrar.");
-			System.out.println("El Usuario con id: " + idPelicula + " no existe para borrar.");
+			System.out.println("La pelicula con id: " + idPelicula + " no existe para borrar.");
 		} else {
 			try (Statement stmt = con.createStatement()) {
 				String query = "DELETE FROM PELICULA WHERE ID_PELICULA=" + idPelicula;
