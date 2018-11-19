@@ -4,7 +4,7 @@
         <!-- Por defecto será en C:/ o D:/.. donde se ejecute -->
         <Property name="log-path">/logsSistema</Property>
     </Properties>
-  
+ 
     <Appenders>
         <RollingFile name="file-log" fileName="logs/proyecto.log" filePattern="logs/proyecto-%d{yyyy-MM-dd}.log">
             <PatternLayout pattern="[%5p] - %c{1}:%L %d{yyyy-MM-dd HH:mm:ss} - %m%n"/>
