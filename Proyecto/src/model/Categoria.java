@@ -5,7 +5,7 @@ import java.io.IOException;
 import utilidades.LeerDatos;
 
 /**
- * Clase categoria
+ * CLASE CATEGORIA: creación y modificación de la misma, ademas de permitir ver su contenido a traves de una id.
  * @version 15.11.2018
  * @author John
  *
