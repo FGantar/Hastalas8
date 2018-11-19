@@ -3,9 +3,11 @@ package utilidades;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 /**
- * CLASE LEERDATOS
- * Contiene métodos estáticos para leer por teclado datos de distinto tipo
+ * CLASE LEERDATOS Contiene métodos estáticos para leer por teclado datos de
+ * distinto tipo
+ * 
  * @author Jhon
  * @version 14/11/2018
  *
@@ -14,6 +16,7 @@ public class LeerDatos {
 
 	/**
 	 * Método para leer Strings desde teclado
+	 * 
 	 * @param msg
 	 * @return
 	 * @throws IOException
@@ -27,6 +30,7 @@ public class LeerDatos {
 
 	/**
 	 * Método para leer int desde teclado
+	 * 
 	 * @param msg
 	 * @return
 	 * @throws NumberFormatException

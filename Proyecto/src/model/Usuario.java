@@ -6,15 +6,13 @@ import utilidades.LeerDatos;
 
 /**
  * 
- * CLASE USUARIO: 
- * Contiene información del usuario y un método para crear nuevos
+ * CLASE USUARIO: Contiene información del usuario y un método para crear nuevos
  * usuarios
  * 
  * @author Cristian G. Fortes
  * @version 14/11/2018
  *
  */
-
 
 public class Usuario {
 
