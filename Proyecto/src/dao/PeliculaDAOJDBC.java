@@ -13,9 +13,10 @@ import model.Pelicula;
 import utilidades.Fichero;
 
 /**
- * CLASE USUARIODAOJDBC
+ * CLASE PELICULADAOJDBC
  * Contiene métodos de gestión de peliculas accediendo a la base de datos
  * @author Cristian G. Fortes
+ * @version 15/11/2018
  *
  */
 

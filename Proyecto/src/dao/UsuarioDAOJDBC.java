@@ -1,8 +1,7 @@
 package dao;
 
 /**
- * 
- * CLASE USUARIODAOJDBC
+ *  CLASE USUARIODAOJDBC
  * Contiene métodos de gestión de usuarios accediendo a la base de datos
  * 
  * @author Cristian G. Fortes
