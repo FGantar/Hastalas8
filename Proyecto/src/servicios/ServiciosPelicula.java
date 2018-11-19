@@ -33,7 +33,8 @@ public class ServiciosPelicula implements OperacionesImpl<Pelicula, Integer> {
 	}
 
 	@Override
-	public void modificar(Pelicula p) {
+	public void modificar(Pelicula p) throws DAOException {
+		peliculaDAO.modificarPelicula(p);
 	}
 
 	@Override

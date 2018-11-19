@@ -157,6 +157,7 @@ public class Menu {
 				sv.borrar(idPelicula);
 				break;
 			case 3:
+				p.generadorPeliculas();
 				sv.modificar(p);
 				break;
 			case 4:
