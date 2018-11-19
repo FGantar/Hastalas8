@@ -46,7 +46,7 @@ public class Test {
  
 			cont2 = user.buscar("select count(*) from Usuario");
 			System.out.println(cont2);
-			assertEquals(cont, cont2);
+			assertEquals(cont, cont2-1);
 
 		} catch (DAOException | NumberFormatException | IOException e) {
 			// TODO Auto-generated catch block
@@ -76,7 +76,7 @@ public class Test {
 			
 			int segundo = userDAO.buscar("SELECT COUNT(*) FROM USUARIO");
 
-			assertEquals(primero, segundo - 1);
+			assertEquals(primero, segundo +1);
 
 		} catch (Exception e) {
 			logger.warn("ERROR " + e.getMessage());
