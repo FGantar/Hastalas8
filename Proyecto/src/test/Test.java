@@ -73,7 +73,7 @@ public class Test {
 
 		UsuarioDAOJDBC userDAO = new UsuarioDAOJDBC();
 
-		con = new Conex().getConex();
+		//con = new Conex().getConex();
 
 		try (Statement stmt = con.createStatement()) {
 			String query1 = "SELECT COUNT(*) FROM USUARIO";
