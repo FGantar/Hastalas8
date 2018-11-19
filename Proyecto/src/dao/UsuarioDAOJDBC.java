@@ -12,7 +12,6 @@ package dao;
 
 import model.Pelicula;
 import model.Usuario;
-import utilidades.Fichero;
 
 import java.sql.Statement;
 import java.sql.Connection;
@@ -74,7 +73,7 @@ public class UsuarioDAOJDBC {
 		if (user2 == null) {
 			// throw new DAOException("El Usuario con id: " +
 			// user2.getIdUsuario() + " no existe.");
-			System.out.println("El Usuario con id: " + user2.getIdUsuario() + " no existe.");
+			System.out.println("El Usuario con id: " + user.getIdUsuario() + " no existe.");
 		} else {
 			try (Statement stmt = con.createStatement()) {
 				String query = "UPDATE USUARIO SET NOMBRE='" + user.getNombre() + "'," + "FECHA_NACIMIENTO='"
@@ -190,7 +189,7 @@ public class UsuarioDAOJDBC {
 	public ArrayList<Pelicula> peliculasQuePuedeVer(int idUsuario) throws DAOException {
 		ArrayList<Pelicula> peli = new ArrayList<>();
 		Pelicula p;
-		Usuario user2 = buscarPorID(idUsuario);
+		//Usuario user2 = buscarPorID(idUsuario);
 		/*
 		 * if (user2 == null) { // throw new DAOException("El Usuario con id: "
 		 * + // user2.getIdUsuario() + " ya existe.");

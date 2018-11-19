@@ -10,12 +10,18 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import model.Pelicula;
-import model.Usuario;
 import utilidades.Fichero;
+
+/**
+ * CLASE USUARIODAOJDBC
+ * Contiene métodos de gestión de peliculas accediendo a la base de datos
+ * @author Cristian G. Fortes
+ *
+ */
 
 public class PeliculaDAOJDBC {
 
-	private static Logger logger = LogManager.getLogger(Fichero.class);
+	private static Logger logger = LogManager.getLogger(PeliculaDAOJDBC.class);
 	private Connection con = null;
 
 	public static final String rutaFichero = "src/Peliculas.txt";
@@ -24,6 +30,11 @@ public class PeliculaDAOJDBC {
 		this.con = new Conex().getConex();
 	}
 
+	/**
+	 * Método para insertar una pelicula a la base de datos 
+	 * @param film
+	 * @throws DAOException
+	 */
 	public void annadirPelicula(Pelicula film) throws DAOException {
 		Pelicula pelicula = buscarPorID(film.getId());
 		if (pelicula != null) {
@@ -49,6 +60,11 @@ public class PeliculaDAOJDBC {
 		}
 	}
 
+	/**
+	 * Metodo para modificar una pelicula en la base de datos
+	 * @param film
+	 * @throws DAOException
+	 */
 	public void modificarPelicula(Pelicula film) throws DAOException {
 		try (Statement stmt = con.createStatement()) {
 			String query = "UPDATE PELICULA SET ID_PELICULA='" + film.getId() + "',   NOMBRE_PEL='" + film.getNombre()
@@ -85,9 +101,11 @@ public class PeliculaDAOJDBC {
 		return peliculasCargadas;
 	}
 
-	/**
+	 /**
 	 * El método stringToPelicula() nos permite convertir el String del Fichero
 	 * separado por "," en objetos Pelicula.
+	 * @param peliculaString
+	 * @return Pelicula
 	 */
 
 	private static Pelicula stringToPelicula(String peliculaString) {
@@ -109,6 +127,12 @@ public class PeliculaDAOJDBC {
 		return peliculaObjeto;
 	}
 
+	/**
+	 * 
+	 * Metodo getListaPelicula devuelve una lista de películas
+	 * @return ArrayList<Pelicula>
+	 * @throws DAOException
+	 */
 	public ArrayList<Pelicula> getListaPelicula() throws DAOException {
 		ArrayList<Pelicula> films = new ArrayList<>();
 		try (Statement stmt = con.createStatement()) {
@@ -125,6 +149,11 @@ public class PeliculaDAOJDBC {
 		return films;
 	}
 
+	/**
+	 * Metodo peliculaMasVista devuelve la película mas vista
+	 * @return Pelicula
+	 * @throws DAOException
+	 */
 	public Pelicula peliculaMasVista() throws DAOException {
 		Pelicula film = null;
 		try (Statement stmt = con.createStatement()) {
@@ -140,6 +169,12 @@ public class PeliculaDAOJDBC {
 		return film;
 	}
 
+	/**
+	 * Metodo peliculaMasValorada devuelve la película mas valorada
+	 * 
+	 * @return Pelicula
+	 * @throws DAOException
+	 */
 	public Pelicula peliculaMasValorada() throws DAOException {
 		Pelicula film = null;
 		try (Statement stmt = con.createStatement()) {
@@ -155,6 +190,13 @@ public class PeliculaDAOJDBC {
 		return film;
 	}
 
+	/**
+	 * Metodo buscarPorID busca una Pelicula por id y la devuelve
+	 * 
+	 * @param idPelicula
+	 * @return Pelicula
+	 * @throws DAOException
+	 */
 	public Pelicula buscarPorID(int idPelicula) throws DAOException {
 		try (Statement stmt = con.createStatement()) {
 			String query = "SELECT * FROM PELICULA WHERE ID_PELICULA=" + idPelicula;
@@ -172,6 +214,14 @@ public class PeliculaDAOJDBC {
 		}
 	}
 	
+	/**
+	 * Metodo getListaPeliculasFiltradas devuleve una arraylist de peliculas filtradas
+	 * por una categoria
+	 * 
+	 * @param catID
+	 * @return ArrayList<Pelicula>
+	 * @throws DAOException
+	 */
 	public ArrayList<Pelicula> getListaPeliculasFiltrada(int catID) throws DAOException {
 		ArrayList<Pelicula> films = new ArrayList<>();
 		try (Statement stmt = con.createStatement()) {
