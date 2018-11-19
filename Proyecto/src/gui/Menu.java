@@ -11,6 +11,14 @@ import servicios.ServiciosPelicula;
 import servicios.ServiciosUsuario;
 import utilidades.LeerDatos;
 
+/**
+ * Clase menu gestiona la interfaz gráfica de la aplicacion
+ * 
+ * @author Jorge Castellano
+ * @version 19.11.2018
+ *
+ */
+
 public class Menu {
 
 	public static void menu() throws DAOException, NumberFormatException, IOException {
@@ -49,6 +57,15 @@ public class Menu {
 		System.out.println("Ciao");
 	}
 
+	/**
+	 * 
+	 * Método menuUsuario se encarga de gestionar las opciones usuario
+	 * 
+	 * 
+	 * @throws DAOException
+	 * @throws NumberFormatException
+	 * @throws IOException
+	 */
 	public static void menuUsuario() throws DAOException, NumberFormatException, IOException {
 
 		ServiciosUsuario sv = new ServiciosUsuario();
@@ -99,6 +116,16 @@ public class Menu {
 
 	}
 
+	/**
+	 * 
+	 * 
+	 * Método menuPelicula se encarga de gestionar las opciones de pelicula
+	 * 
+	 * @throws DAOException
+	 * @throws NumberFormatException
+	 * @throws IOException
+	 */
+	
 	public static void menuPelicula() throws DAOException, NumberFormatException, IOException {
 		int i = 0;
 		do {
@@ -150,6 +177,15 @@ public class Menu {
 
 	}
 
+	/**
+	 * 
+	 * Método menuCategoria se encarga de gestionar las opciones de categorías 
+	 * 
+	 * @throws DAOException
+	 * @throws NumberFormatException
+	 * @throws IOException
+	 */
+	
 	public static void menuCategorias() throws DAOException, NumberFormatException, IOException {
 
 		int i = 0;
