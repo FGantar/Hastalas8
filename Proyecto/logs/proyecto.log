@@ -8,3 +8,7 @@
 [ WARN] - UsuarioDAOJDBC:110 2018-11-19 10:09:49 - Error Cannot delete or update a parent row: a foreign key constraint fails (`movieflix`.`usuario_pelicula`, CONSTRAINT `id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION)
 [ WARN] - Test:97 2018-11-19 10:09:49 - ERROR Error borrando usuario en DAO
 [ WARN] - UsuarioDAOJDBC:58 2018-11-19 11:36:04 - Error Cannot add or update a child row: a foreign key constraint fails (`movieflix`.`usuario`, CONSTRAINT `` FOREIGN KEY (`id_abono`) REFERENCES `abono` (`id_abono`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+[ WARN] - UsuarioDAOJDBC:218 2018-11-19 12:33:37 - Error You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by p.nombre_pel' at line 1
+[ WARN] - UsuarioDAOJDBC:218 2018-11-19 12:33:54 - Error You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by p.nombre_pel' at line 1
+[ WARN] - UsuarioDAOJDBC:218 2018-11-19 12:34:29 - Error Unknown column 'a.id_abono' in 'on clause'
+[ WARN] - UsuarioDAOJDBC:59 2018-11-19 12:45:26 - Error Cannot add or update a child row: a foreign key constraint fails (`movieflix`.`usuario`, CONSTRAINT `` FOREIGN KEY (`id_abono`) REFERENCES `abono` (`id_abono`) ON DELETE NO ACTION ON UPDATE NO ACTION)

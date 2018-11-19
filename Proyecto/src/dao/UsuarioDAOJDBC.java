@@ -206,8 +206,7 @@ public class UsuarioDAOJDBC {
 		 */
 		try (Statement stmt = con.createStatement()) {
 			ResultSet rs = stmt.executeQuery(
-					"select p.* from pelicula p join categoria c on p.categoria_id=c.id_categoria join abono_categoria a on a.categoria_id=c.id_categoria join abono n on "
-							+ idUsuario + "=a.abono_id group by p.nombre_pel");
+					"SELECT P.* FROM PELICULA P, USUARIO U, USUARIO_PELICULA PU, CATEGORIA C, ABONO_CATEGORIA AC, ABONO A WHERE U.ID_USUARIO="+ idUsuario+" AND P.CATEGORIA_ID=C.ID_CATEGORIA AND C.ID_CATEGORIA=AC.CATEGORIA_ID AND A.ID_ABONO=AC.ABONO_ID AND A.ID_ABONO=U.ID_ABONO GROUP BY P.NOMBRE_PEL;");
 			while (rs.next()) {
 				p = new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA_ID"),
 						rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA"));
