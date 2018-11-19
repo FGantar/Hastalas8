@@ -14,6 +14,12 @@ import java.util.Scanner;
  */
 public class LeerDatos {
 
+	/**
+	 * Método para leer Strings desde teclado
+	 * @param msg
+	 * @return
+	 * @throws IOException
+	 */
 	public static String leerString(String msg) throws IOException {
 		System.out.println(msg);
 		// return new Scanner(System.in).nextLine();
@@ -21,12 +27,24 @@ public class LeerDatos {
 
 	};
 
+	/**
+	 * Método para leer int desde teclado
+	 * @param msg
+	 * @return
+	 * @throws NumberFormatException
+	 * @throws IOException
+	 */
 	public static int leerInt(String msg) throws NumberFormatException, IOException {
 		System.out.println(msg);
 		// return new Scanner(System.in).nextInt();
 		return Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
 	};
 
+	/**
+	 * Método para leer double desde teclado
+	 * @param msg
+	 * @return
+	 */
 	public static double leerDouble(String msg) {
 		System.out.println(msg);
 		return new Scanner(System.in).nextDouble();

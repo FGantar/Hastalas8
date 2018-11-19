@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
  * CLASE FICHERO
  * Contiene métodos estáticos para trabajar con ficheros
  * @author Rebeca Aceituno
- * @version 15/11/2018
+ * @version 15/11/2018 
  *
  */
 public class Fichero {
