@@ -5,6 +5,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+/**
+ * CLASE LEERDATOS
+ * Contiene métodos estáticos para leer por teclado datos de distinto tipo
+ * @author Jhon
+ * @version 14/11/2018
+ *
+ */
 public class LeerDatos {
 
 	public static String leerString(String msg) throws IOException {
