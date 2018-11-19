@@ -43,13 +43,13 @@ public class Test {
 
 		try {
 			cont = user.buscar("select count(*) from Usuario");
-
+			System.out.println(cont);
 			u.creadorUsuario();
 
 			user.annadirUsuario(u);
 
 			cont2 = user.buscar("select count(*) from Usuario");
-
+			System.out.println(cont2);
 			assertEquals(cont, cont2);
 
 		} catch (DAOException | NumberFormatException | IOException e) {

@@ -171,7 +171,7 @@ public class UsuarioDAOJDBC {
 
 			ResultSet rs = stmt.executeQuery(query);
 			if (rs.next()) {
-				idBuscar = rs.getInt("ID_USUARIO");
+				idBuscar = rs.getInt(1);
 			}
 
 		} catch (SQLException se) {
