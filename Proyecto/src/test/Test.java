@@ -15,10 +15,24 @@ import dao.Conex;
 import dao.DAOException;
 import dao.UsuarioDAOJDBC;
 
+/**
+ * 
+ * Clase Test se encarga de realizar test para comprobar el funcionamiento de la aplicación
+ * 
+ * @author Jorge Castellano
+ * @version 19/11/2018
+ * 
+ */
+
 public class Test {
 
-	private Logger logger = LogManager.getLogger(Conex.class);
+	private Logger logger = LogManager.getLogger(Test.class);
 
+	/**
+	 * 
+	 * Metodo anadirUsuario comprueba cuantos usuarios hay y despues de realizar un insert comprueba si hay uno mas
+	 * 
+	 */
 	@org.junit.Test
 	public void anadirUsuario() {
 
@@ -44,7 +58,11 @@ public class Test {
 		}
 
 	}
-
+	/**
+	 * 
+	 * Metodo testBorrarUsuario comprueba cuantos usuarios hay y despues de realizar un delete comprueba si hay uno menos
+	 * 
+	 */
 	@org.junit.Test
 	public void testBorrarUsuario() {
 
