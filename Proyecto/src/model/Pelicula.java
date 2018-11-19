@@ -4,6 +4,16 @@ import java.io.IOException;
 
 import utilidades.LeerDatos;
 
+/**
+ * 
+ * Clase Pelicula: Contiene información de las películas, métodos para crear nuevas películas y 
+ * obtener el nombre de la categoría a partir de la id de esta.
+ * 
+ * @author Rebeca Aceituno
+ * @version 1
+ *
+ */
+
 public class Pelicula {
 
 	/**

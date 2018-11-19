@@ -14,7 +14,6 @@ import utilidades.LeerDatos;
  *
  */
 
-// prueba2
 
 public class Usuario {
 
@@ -151,6 +150,9 @@ public class Usuario {
 
 	}
 
+	/**
+	 * Método toString de Usuario
+	 */
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
