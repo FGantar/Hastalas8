@@ -2,11 +2,11 @@ package dao;
 
 /**
  * 
- * Clase UsuarioDAOJDBC
+ * CLASE USUARIODAOJDBC
  * Contiene métodos de gestión de usuarios accediendo a la base de datos
  * 
  * @author Cristian G. Fortes
- *@version 1
+ *@version 14/11/2018
  *
  */
 
@@ -24,14 +24,24 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class UsuarioDAOJDBC {
+	
+	// ATRIBUTOS
 
 	private Connection con = null;
 	private static Logger logger = LogManager.getLogger(Fichero.class);
 
+	// CONSTRUCTORES
 	public UsuarioDAOJDBC() {
 		this.con = new Conex().getConex();
 	}
 
+	// MÉTODOS
+	
+	/**
+	 * Método para añadir usuarios nuevos a la base de datos
+	 * @param user
+	 * @throws DAOException
+	 */
 	public void annadirUsuario(Usuario user) throws DAOException {
 		Usuario user2 = buscarPorID(user.getIdUsuario());
 		if (user2 != null) {
@@ -54,6 +64,11 @@ public class UsuarioDAOJDBC {
 		}
 	}
 
+	/**
+	 * Método para modificar usuarios ya presentes en la base de datos
+	 * @param user
+	 * @throws DAOException
+	 */
 	public void modificarUsuario(Usuario user) throws DAOException {
 		Usuario user2 = buscarPorID(user.getIdUsuario());
 		if (user2 == null) {
@@ -75,6 +90,11 @@ public class UsuarioDAOJDBC {
 		}
 	}
 
+	/**
+	 * Método para borrar usuarios presentes en la base de datos
+	 * @param idUsuario
+	 * @throws DAOException
+	 */
 	public void borrarUsuario(int idUsuario) throws DAOException {
 		Usuario user = buscarPorID(idUsuario);
 		if (user == null) {
@@ -94,6 +114,12 @@ public class UsuarioDAOJDBC {
 		}
 	}
 
+	/**
+	 * Método para buscar usuarios por ID dentro de la base de datos
+	 * @param idUsuario
+	 * @return new Usuario
+	 * @throws DAOException
+	 */
 	public Usuario buscarPorID(int idUsuario) throws DAOException {
 		try (Statement stmt = con.createStatement()) {
 			String query = "SELECT U.ID_USUARIO, U.NOMBRE, U.FECHA_NACIMIENTO, U.CIUDAD, A.NOMBRE_AB FROM USUARIO AS U, ABONO AS A WHERE U.ID_USUARIO="
@@ -112,6 +138,11 @@ public class UsuarioDAOJDBC {
 		}
 	}
 
+	/**
+	 * Método para obtener la lista de usuarios
+	 * @return new Usuario
+	 * @throws DAOException
+	 */
 	public ArrayList<Usuario> getListaUsuarios() throws DAOException {
 		ArrayList<Usuario> user = new ArrayList<>();
 		try (Statement stmt = con.createStatement()) {
@@ -129,6 +160,12 @@ public class UsuarioDAOJDBC {
 		return user;
 	}
 
+	/**
+	 * Método para buscar la id de un usuario
+	 * @param String query
+	 * @return id_usuario
+	 * @throws DAOException
+	 */
 	public int buscar(String query) throws DAOException {
 		int idBuscar = 0;
 		try (Statement stmt = con.createStatement()) {
@@ -144,6 +181,12 @@ public class UsuarioDAOJDBC {
 		return idBuscar;
 	}
 
+	/**
+	 * Método para sacar la lista de películas que un usuario puede ver según su abono
+	 * @param idUsuario
+	 * @return ArrayList películas
+	 * @throws DAOException
+	 */
 	public ArrayList<Pelicula> peliculasQuePuedeVer(int idUsuario) throws DAOException {
 		ArrayList<Pelicula> peli = new ArrayList<>();
 		Pelicula p;
@@ -172,6 +215,12 @@ public class UsuarioDAOJDBC {
 		return peli;
 	}
 
+	/**
+	 * Método para sacar una lista de películas no vistas por el usuario dentro de su catálogo
+	 * @param idUsuario
+	 * @return ArrayList películas
+	 * @throws DAOException
+	 */
 	public ArrayList<Pelicula> peliculasNoVistas(int idUsuario) throws DAOException {
 
 		ArrayList<Pelicula> noVistas = new ArrayList<Pelicula>();
