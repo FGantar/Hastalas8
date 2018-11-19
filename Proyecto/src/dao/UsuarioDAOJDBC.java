@@ -214,15 +214,15 @@ public class UsuarioDAOJDBC {
 						rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA"));
 				peli.add(p);
 			}
-			
-			if(p==null){
-				
-				System.out.println("no existe el usuario con la id "+idUsuario);
-				
+
+			if (p == null) {
+
+				System.out.println("no existe el usuario con la id " + idUsuario);
+
 			}
 
 		} catch (SQLException se) {
-			logger.warn("Error " + se.getMessage());
+			logger.warn("Error " + se.getMessage()); 
 			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
 		}
 		// }
