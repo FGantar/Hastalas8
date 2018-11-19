@@ -22,7 +22,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class UsuarioDAOJDBC {
-	
+
 	// ATRIBUTOS
 
 	private Connection con = null;
@@ -34,9 +34,10 @@ public class UsuarioDAOJDBC {
 	}
 
 	// MÉTODOS
-	
+
 	/**
 	 * Método para añadir usuarios nuevos a la base de datos
+	 * 
 	 * @param user
 	 * @throws DAOException
 	 */
@@ -64,6 +65,7 @@ public class UsuarioDAOJDBC {
 
 	/**
 	 * Método para modificar usuarios ya presentes en la base de datos
+	 * 
 	 * @param user
 	 * @throws DAOException
 	 */
@@ -90,6 +92,7 @@ public class UsuarioDAOJDBC {
 
 	/**
 	 * Método para borrar usuarios presentes en la base de datos
+	 * 
 	 * @param idUsuario
 	 * @throws DAOException
 	 */
@@ -114,6 +117,7 @@ public class UsuarioDAOJDBC {
 
 	/**
 	 * Método para buscar usuarios por ID dentro de la base de datos
+	 * 
 	 * @param idUsuario
 	 * @return new Usuario
 	 * @throws DAOException
@@ -138,6 +142,7 @@ public class UsuarioDAOJDBC {
 
 	/**
 	 * Método para obtener la lista de usuarios
+	 * 
 	 * @return new Usuario
 	 * @throws DAOException
 	 */
@@ -160,14 +165,16 @@ public class UsuarioDAOJDBC {
 
 	/**
 	 * Método para buscar la id de un usuario
-	 * @param String query
+	 * 
+	 * @param String
+	 *            query
 	 * @return id_usuario
 	 * @throws DAOException
 	 */
 	public int buscar(String query) throws DAOException {
 		int idBuscar = 0;
 		try (Statement stmt = con.createStatement()) {
-  
+
 			ResultSet rs = stmt.executeQuery(query);
 			if (rs.next()) {
 				idBuscar = rs.getInt(1);
@@ -180,7 +187,9 @@ public class UsuarioDAOJDBC {
 	}
 
 	/**
-	 * Método para sacar la lista de películas que un usuario puede ver según su abono
+	 * Método para sacar la lista de películas que un usuario puede ver según su
+	 * abono
+	 * 
 	 * @param idUsuario
 	 * @return ArrayList películas
 	 * @throws DAOException
@@ -188,7 +197,7 @@ public class UsuarioDAOJDBC {
 	public ArrayList<Pelicula> peliculasQuePuedeVer(int idUsuario) throws DAOException {
 		ArrayList<Pelicula> peli = new ArrayList<>();
 		Pelicula p;
-		//Usuario user2 = buscarPorID(idUsuario);
+		// Usuario user2 = buscarPorID(idUsuario);
 		/*
 		 * if (user2 == null) { // throw new DAOException("El Usuario con id: "
 		 * + // user2.getIdUsuario() + " ya existe.");
@@ -214,7 +223,9 @@ public class UsuarioDAOJDBC {
 	}
 
 	/**
-	 * Método para sacar una lista de películas no vistas por el usuario dentro de su catálogo
+	 * Método para sacar una lista de películas no vistas por el usuario dentro
+	 * de su catálogo
+	 * 
 	 * @param idUsuario
 	 * @return ArrayList películas
 	 * @throws DAOException
@@ -224,14 +235,24 @@ public class UsuarioDAOJDBC {
 		ArrayList<Pelicula> noVistas = new ArrayList<Pelicula>();
 
 		try (Statement stmt = con.createStatement()) {
+
 			String query = "SELECT P.* FROM PELICULA P, USUARIO U, USUARIO_PELICULA PU, CATEGORIA C, ABONO_CATEGORIA AC, ABONO A WHERE U.ID_USUARIO="
 					+ idUsuario + " AND PU.ID_USUARIO= " + idUsuario
 					+ " AND P.ID_PELICULA NOT IN (SELECT PA.ID_PELICULA FROM USUARIO_PELICULA PA) AND P.CATEGORIA_ID=C.ID_CATEGORIA AND C.ID_CATEGORIA=AC.CATEGORIA_ID AND A.ID_ABONO=AC.ABONO_ID AND A.ID_ABONO=U.ID_ABONO GROUP BY P.NOMBRE_PEL";
 			ResultSet rs = stmt.executeQuery(query);
-			while (rs.next()) {
-				noVistas.add(
-						new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA_ID"),
-								rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA")));
+			if (!rs.next()) {
+
+				return peliculasQuePuedeVer(idUsuario);
+
+			} else {
+
+				do {
+					noVistas.add(new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"),
+							rs.getInt("CATEGORIA_ID"), rs.getInt("VISTA"), rs.getInt("VALORACION"),
+							rs.getInt("ID_PELICULA")));
+
+				} while (rs.next());
+
 			}
 		} catch (SQLException se) {
 			logger.warn("Error " + se.getMessage());
