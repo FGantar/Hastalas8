@@ -7,6 +7,13 @@ import java.sql.SQLException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
+/**
+ *  Clase Conex, encargada de las conexiones con la base de datos.
+ * @author Rebeca
+ * @version 15.11.2018
+ */
+
 public class Conex {
 
 	private Connection con;

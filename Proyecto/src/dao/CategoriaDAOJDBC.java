@@ -8,6 +8,12 @@ import java.util.ArrayList;
 
 import model.Categoria;
 
+/**
+ * Clase DAO categoria
+ * @author John
+ * @version 16.11.2018
+ */
+
 public class CategoriaDAOJDBC {
 
 	/**

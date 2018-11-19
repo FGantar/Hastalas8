@@ -13,8 +13,9 @@ import model.Pelicula;
 import utilidades.Fichero;
 
 /**
- * CLASE PELICULADAOJDBC
- * Contiene métodos de gestión de peliculas accediendo a la base de datos
+ * CLASE PELICULADAOJDBC Contiene métodos de gestión de peliculas accediendo a
+ * la base de datos
+ * 
  * @author Cristian G. Fortes
  * @version 15/11/2018
  *
@@ -32,11 +33,12 @@ public class PeliculaDAOJDBC {
 	}
 
 	/**
-	 * Método para insertar una pelicula a la base de datos 
+	 * Método para insertar una pelicula a la base de datos
+	 * 
 	 * @param film
 	 * @throws DAOException
 	 */
-	
+
 	public void annadirPelicula(Pelicula film) throws DAOException {
 		Pelicula pelicula = buscarPorID(film.getId());
 		if (pelicula != null) {
@@ -62,6 +64,7 @@ public class PeliculaDAOJDBC {
 
 	/**
 	 * Metodo para modificar una pelicula en la base de datos
+	 * 
 	 * @param film
 	 * @throws DAOException
 	 */
@@ -73,7 +76,8 @@ public class PeliculaDAOJDBC {
 			try (Statement stmt = con.createStatement()) {
 				String query = "UPDATE PELICULA SET NOMBRE_PEL='" + film.getNombre() + "'," + "ANNO_ESTRENO='"
 						+ film.getAnno() + "'," + "CATEGORIA_ID=" + film.getCategoria() + "," + "VISTA="
-						+ film.getVista() + ", VALORACION=" + film.getValoracion() + " WHERE ID_PELICULA=" + film.getId();
+						+ film.getVista() + ", VALORACION=" + film.getValoracion() + " WHERE ID_PELICULA="
+						+ film.getId();
 				if (stmt.executeUpdate(query) != 1) {
 					throw new DAOException("Error modificando pelicula");
 				}
@@ -83,7 +87,7 @@ public class PeliculaDAOJDBC {
 			}
 		}
 	}
-	
+
 	public void borrarPelicula(int idPelicula) throws DAOException {
 		Pelicula film = buscarPorID(idPelicula);
 		if (film == null) {
@@ -121,9 +125,10 @@ public class PeliculaDAOJDBC {
 		return peliculasCargadas;
 	}
 
-	 /**
+	/**
 	 * El método stringToPelicula() nos permite convertir el String del Fichero
 	 * separado por "," en objetos Pelicula.
+	 * 
 	 * @param peliculaString
 	 * @return Pelicula
 	 */
@@ -150,6 +155,7 @@ public class PeliculaDAOJDBC {
 	/**
 	 * 
 	 * Metodo getListaPelicula devuelve una lista de películas
+	 * 
 	 * @return ArrayList<Pelicula>
 	 * @throws DAOException
 	 */
@@ -171,6 +177,7 @@ public class PeliculaDAOJDBC {
 
 	/**
 	 * Metodo peliculaMasVista devuelve la película mas vista
+	 * 
 	 * @return Pelicula
 	 * @throws DAOException
 	 */
@@ -233,10 +240,10 @@ public class PeliculaDAOJDBC {
 			throw new DAOException("Error buscando película en DAO", se);
 		}
 	}
-	
+
 	/**
-	 * Metodo getListaPeliculasFiltradas devuleve una arraylist de peliculas filtradas
-	 * por una categoria
+	 * Metodo getListaPeliculasFiltradas devuleve una arraylist de peliculas
+	 * filtradas por una categoria
 	 * 
 	 * @param catID
 	 * @return ArrayList<Pelicula>

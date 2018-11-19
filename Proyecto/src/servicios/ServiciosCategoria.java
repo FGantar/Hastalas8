@@ -6,8 +6,9 @@ import dao.CategoriaDAOJDBC;
 import dao.DAOException;
 import model.Categoria;
 
-/**Nombre clase: ServiciosCategoria
- * Descripción: Implementamos la interfaz Genérica OperacionesImpl con los métodos añadir, modificar, borrar y mostrar.
+/**
+ * Nombre clase: ServiciosCategoria Descripción: Implementamos la interfaz
+ * Genérica OperacionesImpl con los métodos añadir, modificar, borrar y mostrar.
  * 
  * @version: 19.11.2018
  * @author: John
