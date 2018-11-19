@@ -3,15 +3,11 @@ package test;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import model.Usuario;
-import dao.Conex;
 import dao.DAOException;
 import dao.UsuarioDAOJDBC;
 
@@ -66,38 +62,27 @@ public class Test {
 	@org.junit.Test
 	public void testBorrarUsuario() {
 
-		Connection con = null;
-		int contBefore = 0;
-		int contAfter = 0;
-		int idPrueba = 0;
-
 		UsuarioDAOJDBC userDAO = new UsuarioDAOJDBC();
 
 		//con = new Conex().getConex();
 
-		try (Statement stmt = con.createStatement()) {
-			String query1 = "SELECT COUNT(*) FROM USUARIO";
-			ResultSet rs1 = stmt.executeQuery(query1);
-			if (rs1.next()) {
-				contBefore = rs1.getInt(1);
-			}
-			String query2 = "SELECT * FROM USUARIO LIMIT 1";
-			ResultSet rs2 = stmt.executeQuery(query2);
-			if (rs2.next()) {
-				idPrueba = rs2.getInt("ID_USUARIO");
-			}
-			userDAO.borrarUsuario(idPrueba);
-			String query3 = "SELECT COUNT(*) FROM USUARIO";
-			ResultSet rs3 = stmt.executeQuery(query3);
-			if (rs3.next()) {
-				contAfter = rs1.getInt(1);
-			}
+		
+		try{
+			int primero = userDAO.buscar("SELECT COUNT(*) FROM USUARIO");
+			
+			int cont=userDAO.buscar("SELECT ID_USUARIO FROM USUARIO ORDER BY ID_USUARIO DESC LIMIT 1");
+			
+			userDAO.borrarUsuario(cont);
+			
+			int segundo = userDAO.buscar("SELECT COUNT(*) FROM USUARIO");
+
+			assertEquals(primero, segundo - 1);
 
 		} catch (Exception e) {
 			logger.warn("ERROR " + e.getMessage());
 		}
 
-		assertEquals(contBefore, contAfter + 1);
+		
 	}
 
 }
