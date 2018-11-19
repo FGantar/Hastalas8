@@ -123,7 +123,7 @@ public class Menu {
 				break;
 			case 1:
 				p.generadorPeliculas();
-				sv.annadir(p);
+				sv.annadir(p); 
 				break;
 			case 2:
 				int idPelicula = LeerDatos.leerInt("Introduce id de pelicula a borrar:");
