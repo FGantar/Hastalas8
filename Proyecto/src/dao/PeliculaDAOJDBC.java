@@ -171,5 +171,21 @@ public class PeliculaDAOJDBC {
 			throw new DAOException("Error buscando película en DAO", se);
 		}
 	}
+	
+	public ArrayList<Pelicula> getListaPeliculasFiltrada(int catID) throws DAOException {
+		ArrayList<Pelicula> films = new ArrayList<>();
+		try (Statement stmt = con.createStatement()) {
+			String query = "SELECT * FROM PELICULA WHERE CATEGORIA_ID=" + catID;
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				films.add(new Pelicula(rs.getString("NOMBRE_PEL"), rs.getInt("ANNO_ESTRENO"), rs.getInt("CATEGORIA_ID"),
+						rs.getInt("VISTA"), rs.getInt("VALORACION"), rs.getInt("ID_PELICULA")));
+			}
+
+		} catch (SQLException se) {
+			throw new DAOException("Error obteniendo las películas en DAO: " + se.getMessage(), se);
+		}
+		return films;
+	}
 
 }

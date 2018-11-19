@@ -139,7 +139,7 @@ public class Menu {
 				System.out.println(sv.peliculaMasVista());
 				break;
 			case 6:
-				// falta
+				System.out.println(sv.mostrarPeliculasFiltradas(LeerDatos.leerInt("Indica la categoria:\nPulsa 1: Animación. /nPulsa 2: Policíaca. /nPulsa 3: Comedia./nPulsa 4: Aventuras./nPulsa 5: Romántica./nPulsa 6: Thriller.")));
 				break;
 			case 7:
 				System.out.println(sv.peliculaMasValorada());

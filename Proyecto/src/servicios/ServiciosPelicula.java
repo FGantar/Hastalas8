@@ -69,5 +69,9 @@ public class ServiciosPelicula implements OperacionesImpl<Pelicula, Integer> {
 			}
 		}
 	}
+	
+	public ArrayList<Pelicula> mostrarPeliculasFiltradas(int catID) throws DAOException {
+		return peliculaDAO.getListaPeliculasFiltrada(catID);
+	}
 
 }
