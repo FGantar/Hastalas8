@@ -1,5 +1,12 @@
 package dao;
 
+/**
+ * Clase DAO excepciones, conde tenemos nuestras excepciones personalizadas 
+ * @author Cristian G. Fortes
+ * @version 15/11/2018
+ */
+
+
 public class DAOException extends Exception {
 
 	private static final long serialVersionUID = 1L;

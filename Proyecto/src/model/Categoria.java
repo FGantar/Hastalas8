@@ -4,6 +4,14 @@ import java.io.IOException;
 
 import utilidades.LeerDatos;
 
+/**
+ * Clase categoria
+ * @version 15.11.2018
+ * @author John
+ *
+ */
+
+
 public class Categoria {
 
 	/**
