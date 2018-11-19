@@ -66,18 +66,23 @@ public class PeliculaDAOJDBC {
 	 * @throws DAOException
 	 */
 	public void modificarPelicula(Pelicula film) throws DAOException {
-		try (Statement stmt = con.createStatement()) {
-			String query = "UPDATE PELICULA SET ID_PELICULA='" + film.getId() + "',   NOMBRE_PEL='" + film.getNombre()
-					+ "', ANNO_ESTRENO= " + film.getAnno() + "', CATEGORIA_ID = '" + film.getCategoria()
-					+ "', VISTAS = '" + film.getVista() + "', VALORACION= '" + film.getValoracion() + "WHERE NOMBRE = '"
-					+ film.getNombre();
-			if (stmt.executeUpdate(query) != 1) {
-				throw new DAOException("Error modificando la pelicula");
+		Pelicula pel = buscarPorID(film.getId());
+		if (pel == null) {
+			// throw new DAOException("El Usuario con id: " +
+			// user2.getIdUsuario() + " no existe.");
+			System.out.println("El Usuario con id: " + pel.getId() + " no existe.");
+		} else {
+			try (Statement stmt = con.createStatement()) {
+				String query = "UPDATE PELICULA SET NOMBRE_PEL='" + film.getNombre() + "'," + "ANNO_ESTRENO='"
+						+ film.getAnno() + "'," + "CATEGORIA_ID=" + film.getCategoria() + "," + "VISTA="
+						+ film.getVista() + ", VALORACION=" + film.getValoracion() + " WHERE ID_PELICULA=" + film.getId();
+				if (stmt.executeUpdate(query) != 1) {
+					throw new DAOException("Error modificando usuario");
+				}
+			} catch (SQLException se) {
+				logger.warn("Error " + se.getMessage());
+				throw new DAOException("Error modificando usuario en DAO", se);
 			}
-
-		} catch (SQLException se) {
-			logger.warn("ERROR " + se.getMessage());
-			throw new DAOException("Error modificando pelicula en DAO", se);
 		}
 	}
 
