@@ -160,7 +160,7 @@ public class Usuario {
 		builder.append(idUsuario);
 		builder.append(", nombre=");
 		builder.append(nombre);
-		builder.append(", fechaNacimiento=");
+		builder.append(", fecha de nacimiento=");
 		builder.append(fechaNacimiento);
 		builder.append(", ciudad=");
 		builder.append(ciudad);
