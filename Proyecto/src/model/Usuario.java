@@ -6,15 +6,15 @@ import utilidades.LeerDatos;
 
 /**
  * 
- * Clase Usuario Contiene información del usuario y un método para crear nuevos
+ * CLASE USUARIO: 
+ * Contiene información del usuario y un método para crear nuevos
  * usuarios
  * 
  * @author Cristian G. Fortes
- * @version 1
+ * @version 14/11/2018
  *
  */
 
-// prueba2
 
 public class Usuario {
 
@@ -151,6 +151,9 @@ public class Usuario {
 
 	}
 
+	/**
+	 * Método toString de Usuario
+	 */
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -158,7 +161,7 @@ public class Usuario {
 		builder.append(idUsuario);
 		builder.append(", nombre=");
 		builder.append(nombre);
-		builder.append(", fechaNacimiento=");
+		builder.append(", fecha de nacimiento=");
 		builder.append(fechaNacimiento);
 		builder.append(", ciudad=");
 		builder.append(ciudad);

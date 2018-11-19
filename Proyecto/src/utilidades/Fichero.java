@@ -11,12 +11,19 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * CLASE FICHERO
+ * Contiene métodos estáticos para trabajar con ficheros
+ * @author Rebeca Aceituno
+ * @version 15/11/2018 
+ *
+ */
 public class Fichero {
 
 	private static Logger logger = LogManager.getLogger(Fichero.class);
 
 	/**
-	 * Crear Método estático para leer ficheros. Utilizado para leer la lista de
+	 * Método estático para leer ficheros. Utilizado para leer la lista de
 	 * 25 peliculas del archivo "Peliculas.txt".
 	 */
 
