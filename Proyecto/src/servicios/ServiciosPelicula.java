@@ -6,8 +6,13 @@ import dao.DAOException;
 import dao.PeliculaDAOJDBC;
 import model.Pelicula;
 
-/**
- * Implementar la interfaz Genérica OperacionesImpl
+/**Nombre clase: ServiciosPelicula
+ * Descripción: Implementamos la interfaz Genérica OperacionesImpl con los métodos añadir, modificar, borrar y mostrar.
+ * Realizamos un método que realice una carga inicial de 25 peliculas desde un fichero Peliculas.txt a la BBDD.
+ * Llamamos a los métodos de capa PeliculaDAO que muestra la película más vista, método que muestra la pelicula más valorada y método que muestra la lista de películas filtradas por id.
+ * 
+ * @version: 19.11.2018
+ * @author: Rebeca
  */
 
 public class ServiciosPelicula implements OperacionesImpl<Pelicula, Integer> {

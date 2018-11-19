@@ -6,8 +6,11 @@ import dao.CategoriaDAOJDBC;
 import dao.DAOException;
 import model.Categoria;
 
-/**
- * Implementar la interfaz generica OperacionesImpl
+/**Nombre clase: ServiciosCategoria
+ * Descripción: Implementamos la interfaz Genérica OperacionesImpl con los métodos añadir, modificar, borrar y mostrar.
+ * 
+ * @version: 19.11.2018
+ * @author: John
  */
 
 public class ServiciosCategoria implements OperacionesImpl<Categoria, Integer> {

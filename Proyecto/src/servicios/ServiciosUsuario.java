@@ -7,8 +7,13 @@ import dao.UsuarioDAOJDBC;
 import model.Pelicula;
 import model.Usuario;
 
-/**
- * Implementar la interfaz Genérica OperacionesImpl
+/** Nombre clase: ServiciosUsuario
+ * Descripción: Implementamos la interfaz Genérica OperacionesImpl con los métodos añadir, modificar, borrar y mostrar.
+ * Llamamos a los métodos de capa UsuarioDAO que muestra las películas que el usuario puede ver y método que muestra las peliculas que no ha visto.
+ * 
+ * @version: 19.11.2018
+ * @author: Rebeca
+ * 
  */
 
 public class ServiciosUsuario implements OperacionesImpl<Usuario, Integer> {
@@ -44,7 +49,7 @@ public class ServiciosUsuario implements OperacionesImpl<Usuario, Integer> {
 	}
 
 	/**
-	 * Método que muestra las películas que el usuario puede ver.
+	 * Método que muestra las películas que el usuario puede ver y método que muestra las peliculas que no ha visto.
 	 * 
 	 * @throws DAOException
 	 */
