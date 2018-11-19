@@ -22,7 +22,7 @@ import utilidades.LeerDatos;
 
 public class Menu {
 
-	private static Conex c= new Conex();
+	private static Conex c;
 	
 	public static void menu() throws DAOException, NumberFormatException, IOException {
 		int i;
@@ -58,7 +58,9 @@ public class Menu {
 
 		} while (i != 0);
 		System.out.println("Ciao");
+		if(c!=null){
 		c.cerrarConex();
+		}
 	}
 
 	/**
