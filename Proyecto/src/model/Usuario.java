@@ -165,7 +165,7 @@ public class Usuario {
 		builder.append(ciudad);
 		builder.append(", abono=");
 		builder.append(abono);
-		builder.append("]");
+		builder.append("]\n");
 		return builder.toString();
 	}
 
