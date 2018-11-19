@@ -28,7 +28,7 @@ public class UsuarioDAOJDBC {
 	// ATRIBUTOS
 
 	private Connection con = null;
-	private static Logger logger = LogManager.getLogger(Fichero.class);
+	private static Logger logger = LogManager.getLogger(UsuarioDAOJDBC.class);
 
 	// CONSTRUCTORES
 	public UsuarioDAOJDBC() {
