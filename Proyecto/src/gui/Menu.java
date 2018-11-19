@@ -2,6 +2,7 @@ package gui;
 
 import java.io.IOException;
 
+import dao.Conex;
 import dao.DAOException;
 import model.Categoria;
 import model.Pelicula;
@@ -21,6 +22,8 @@ import utilidades.LeerDatos;
 
 public class Menu {
 
+	private static Conex c= new Conex();
+	
 	public static void menu() throws DAOException, NumberFormatException, IOException {
 		int i;
 		do {
@@ -55,6 +58,7 @@ public class Menu {
 
 		} while (i != 0);
 		System.out.println("Ciao");
+		c.cerrarConex();
 	}
 
 	/**
