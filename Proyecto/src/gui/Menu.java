@@ -23,10 +23,11 @@ import utilidades.LeerDatos;
 public class Menu {
 
 	private static Conex c;
-	
+
 	public static void menu() throws DAOException, NumberFormatException, IOException {
-		int i;
-		do {
+		int i = -1;
+
+		while (i < 0 || i > 4) {
 
 			System.out.println("*** MENÚ PRINCIPAL ***");
 			System.out.println("* Introduzca un número para navegar: *");
@@ -38,28 +39,27 @@ public class Menu {
 
 			i = LeerDatos.leerInt("Introduce un numero:");
 
-			switch (i) {
+		}
 
-			case 1:
-				menuCategorias();
-				break;
-			case 2:
-				menuUsuario();
-				break;
-			case 3:
-				menuPelicula();
-				break;
-			case 4:
-				ServiciosPelicula sp = new ServiciosPelicula();
-				sp.cargaInicialPeliculas();
-				break;
+		switch (i) {
+		case 1:
+			menuCategorias();
+			break;
+		case 2:
+			menuUsuario();
+			break;
+		case 3:
+			menuPelicula();
+			break;
+		case 4:
+			ServiciosPelicula sp = new ServiciosPelicula();
+			sp.cargaInicialPeliculas();
+			break;
 
-			}
+		}
+		if (c != null) {
+			c.cerrarConex();
 
-		} while (i != 0);
-		System.out.println("Ciao");
-		if(c!=null){
-		c.cerrarConex();
 		}
 	}
 
@@ -75,9 +75,9 @@ public class Menu {
 	public static void menuUsuario() throws DAOException, NumberFormatException, IOException {
 
 		ServiciosUsuario sv = new ServiciosUsuario();
-		int i = 0;
+		int i = -1;
 
-		do {
+		while (i < 0 || i > 6) {
 
 			System.out.println("*** MENÚ DE GESTIÓN DE USUARIOS ***");
 			System.out.println("* Introduzca un número para navegar: ");
@@ -89,36 +89,37 @@ public class Menu {
 			System.out.println("5.Peliculas que puede ver un usuario");
 			System.out.println("6.Peliculas que no ha visto el usuario");
 			i = LeerDatos.leerInt("Introduce un numero:");
-			Usuario u = new Usuario();
-			if (i == 1 || i == 3)
-				u.creadorUsuario();
-			switch (i) {
-			case 0:
-				menu();
-				break;
-			case 1:
-				sv.annadir(u);
 
-				break;
-			case 2:
-				sv.borrar(LeerDatos.leerInt("Introduce el id de usuario a borrar:"));
+		}
+		Usuario u = new Usuario();
+		if (i == 1 || i == 3)
+			u.creadorUsuario();
+		switch (i) {
+		case 0:
+			i = 0;
+			menu();
+			break;
+		case 1:
+			sv.annadir(u);
 
-				break;
-			case 3:
-				sv.modificar(u);
-				break;
-			case 4:
-				System.out.println(sv.mostrarTodo());
-				break;
-			case 5:
-				System.out.println(sv.peliculasQuePuedeVer(LeerDatos.leerInt("Introduce el id de usuario:")));
-				break;
-			case 6:
-				System.out.println(sv.peliculasNoVistas(LeerDatos.leerInt("Introduce el id de usuario:")));
-				break;
-			}
+			break;
+		case 2:
+			sv.borrar(LeerDatos.leerInt("Introduce el id de usuario a borrar:"));
 
-		} while (i != 0);
+			break;
+		case 3:
+			sv.modificar(u);
+			break;
+		case 4:
+			System.out.println(sv.mostrarTodo());
+			break;
+		case 5:
+			System.out.println(sv.peliculasQuePuedeVer(LeerDatos.leerInt("Introduce el id de usuario:")));
+			break;
+		case 6:
+			System.out.println(sv.peliculasNoVistas(LeerDatos.leerInt("Introduce el id de usuario:")));
+			break;
+		}
 
 	}
 
@@ -131,10 +132,11 @@ public class Menu {
 	 * @throws NumberFormatException
 	 * @throws IOException
 	 */
-	
+
 	public static void menuPelicula() throws DAOException, NumberFormatException, IOException {
-		int i = 0;
-		do {
+		int i = -1;
+
+		while (i < 0 || i > 7) {
 
 			System.out.println("*** MENÚ DE GESTIÓN DE PELÍCULAS ***");
 			System.out.println("* Introduzca un número para navegar: ");
@@ -146,58 +148,59 @@ public class Menu {
 			System.out.println("5.Pelicula mas vistas");
 			System.out.println("6.Listado peliculas filtradas");
 			System.out.println("7.Peliculas mas valoradas");
-
-			ServiciosPelicula sv = new ServiciosPelicula();
 			i = LeerDatos.leerInt("Introduce un numero:");
-			Pelicula p = new Pelicula();
-			switch (i) {
-			case 0:
-				menu();
-				break;
-			case 1:
-				p.generadorPeliculas();
-				sv.annadir(p);
-				break;
-			case 2:
-				int idPelicula = LeerDatos.leerInt("Introduce id de pelicula a borrar:");
-				sv.borrar(idPelicula);
-				break;
-			case 3:
-				p.generadorPeliculas();
-				sv.modificar(p);
-				break;
-			case 4:
-				System.out.println(sv.mostrarTodo());
-				break;
-			case 5:
-				System.out.println(sv.peliculaMasVista());
-				break;
-			case 6:
-				System.out.println(sv.mostrarPeliculasFiltradas(LeerDatos.leerInt("Indica la categoria:\nPulsa 1: Animación. /nPulsa 2: Policíaca. /nPulsa 3: Comedia./nPulsa 4: Aventuras./nPulsa 5: Romántica./nPulsa 6: Thriller.")));
-				break;
-			case 7:
-				System.out.println(sv.peliculaMasValorada());
-				break;
-			}
 
-		} while (i != 0);
+		}
+
+		ServiciosPelicula sv = new ServiciosPelicula();
+
+		Pelicula p = new Pelicula();
+		switch (i) {
+		case 0:
+			menu();
+			break;
+		case 1:
+			p.generadorPeliculas();
+			sv.annadir(p);
+			break;
+		case 2:
+			int idPelicula = LeerDatos.leerInt("Introduce id de pelicula a borrar:");
+			sv.borrar(idPelicula);
+			break;
+		case 3:
+			p.generadorPeliculas();
+			sv.modificar(p);
+			break;
+		case 4:
+			System.out.println(sv.mostrarTodo());
+			break;
+		case 5:
+			System.out.println(sv.peliculaMasVista());
+			break;
+		case 6:
+			System.out.println(sv.mostrarPeliculasFiltradas(LeerDatos.leerInt(
+					"Indica la categoria:\nPulsa 1: Animación. /nPulsa 2: Policíaca. /nPulsa 3: Comedia./nPulsa 4: Aventuras./nPulsa 5: Romántica./nPulsa 6: Thriller.")));
+			break;
+		case 7:
+			System.out.println(sv.peliculaMasValorada());
+			break;
+		}
 
 	}
 
 	/**
 	 * 
-	 * Método menuCategoria se encarga de gestionar las opciones de categorías 
+	 * Método menuCategoria se encarga de gestionar las opciones de categorías
 	 * 
 	 * @throws DAOException
 	 * @throws NumberFormatException
 	 * @throws IOException
 	 */
-	
+
 	public static void menuCategorias() throws DAOException, NumberFormatException, IOException {
 
-		int i = 0;
-
-		do {
+		int i = -1;
+		while (i < 0 || i > 3) {
 
 			System.out.println("*** MENÚ DE GESTIÓN DE CATEGORÍAS ***");
 			System.out.println("* Introduzca un número para navegar: ");
@@ -205,31 +208,31 @@ public class Menu {
 			System.out.println("1.Añadir categoria");
 			System.out.println("2.Modificar una categoria existente");
 			System.out.println("3.Mostrar categorias");
-
-			ServiciosCategoria sv = new ServiciosCategoria();
 			i = LeerDatos.leerInt("Introduce un numero: ");
-			Categoria c = new Categoria();
+		}
 
-			switch (i) {
+		ServiciosCategoria sv = new ServiciosCategoria();
 
-			case 0:
-				menu();
-				break;
-			case 1:
-				c.generadorCategorias();
-				sv.annadir(c);
-				break;
+		Categoria c = new Categoria();
 
-			case 2:
-				sv.modificar(c);
-				break;
+		switch (i) {
 
-			case 3:
-				System.out.println(sv.mostrarTodo());
-				break;
-			}
+		case 0:
+			menu();
+			break;
+		case 1:
+			c.generadorCategorias();
+			sv.annadir(c);
+			break;
 
-		} while (i != 0);
+		case 2:
+			sv.modificar(c);
+			break;
+
+		case 3:
+			System.out.println(sv.mostrarTodo());
+			break;
+		}
 
 	}
 
