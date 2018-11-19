@@ -7,12 +7,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Categoria;
-import model.Pelicula;
 
 public class CategoriaDAOJDBC {
 
 	/**
-	 * Especificamos como el nos conectaremos a la BBDD
+	 * Especificamos como nos conectaremos a la BBDD
 	 */
 
 	private Connection con = null;
