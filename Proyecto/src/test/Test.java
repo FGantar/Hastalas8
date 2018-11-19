@@ -47,7 +47,7 @@ public class Test {
 			u.creadorUsuario();
 
 			user.annadirUsuario(u);
-
+ 
 			cont2 = user.buscar("select count(*) from Usuario");
 			System.out.println(cont2);
 			assertEquals(cont, cont2);

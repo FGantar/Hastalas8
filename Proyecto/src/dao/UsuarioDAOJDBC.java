@@ -167,7 +167,7 @@ public class UsuarioDAOJDBC {
 	public int buscar(String query) throws DAOException {
 		int idBuscar = 0;
 		try (Statement stmt = con.createStatement()) {
-
+  
 			ResultSet rs = stmt.executeQuery(query);
 			if (rs.next()) {
 				idBuscar = rs.getInt(1);
