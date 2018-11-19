@@ -40,7 +40,7 @@ public class PeliculaDAOJDBC {
 	public void annadirPelicula(Pelicula film) throws DAOException {
 		Pelicula pelicula = buscarPorID(film.getId());
 		if (pelicula != null) {
-			System.out.println("La pelicula con id: " + pelicula.getId() + " ya existe.");
+			System.out.println("La pelicula con id: " + film.getId() + " ya existe.");
 		} else {
 			try (Statement stmt = con.createStatement()) {
 
