@@ -70,7 +70,7 @@ public class PeliculaDAOJDBC {
 		if (pel == null) {
 			// throw new DAOException("El Usuario con id: " +
 			// user2.getIdUsuario() + " no existe.");
-			System.out.println("El Usuario con id: " + pel.getId() + " no existe.");
+			System.out.println("El pelicula con id: " + film.getId() + " no existe.");
 		} else {
 			try (Statement stmt = con.createStatement()) {
 				String query = "UPDATE PELICULA SET NOMBRE_PEL='" + film.getNombre() + "'," + "ANNO_ESTRENO='"
