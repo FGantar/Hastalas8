@@ -222,7 +222,7 @@ public class UsuarioDAOJDBC {
 			}
 
 		} catch (SQLException se) {
-			logger.warn("Error " + se.getMessage()); 
+			logger.warn("Error " + se.getMessage());
 			throw new DAOException("Error obteniendo los usuarios en DAO: " + se.getMessage(), se);
 		}
 		// }

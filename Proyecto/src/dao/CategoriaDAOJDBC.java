@@ -10,6 +10,7 @@ import model.Categoria;
 
 /**
  * Clase DAO categoria
+ * 
  * @author John
  * @version 16.11.2018
  */
